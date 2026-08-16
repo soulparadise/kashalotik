@@ -1,9 +1,0 @@
-# Local design drafts and upload bundle
-concept/
-kashalotik-site-upload.zip
-
-# OS/editor files
-.DS_Store
-Thumbs.db
-.vscode/
-.idea/
