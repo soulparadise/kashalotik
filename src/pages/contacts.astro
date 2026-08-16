@@ -1,0 +1,4 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'; import PageHero from '@/components/PageHero.astro'; import WaveSection from '@/components/WaveSection.astro'; import { site } from '@/data/site';
+---
+<BaseLayout title="Контакты — Кашалотик" description="Адрес, телефон и режим работы бассейна Кашалотик."><main><PageHero eyebrow="Контакты" title="Загляните в «Кашалотик»" text="Приходите познакомиться с бассейном и подобрать удобное время занятий." /><WaveSection tone="blue"><div class="container contact-grid"><article><small>Наш адрес</small><h2>{site.address}</h2><p>{site.hours}</p><a class="button secondary" href={site.maps}>Открыть карту</a></article><article><small>Связаться</small><h2><a href={site.phoneHref}>{site.phone}</a></h2><p><a href={`mailto:${site.email}`}>{site.email}</a></p><a class="button" href={site.booking}>Онлайн-запись</a></article></div></WaveSection></main></BaseLayout>

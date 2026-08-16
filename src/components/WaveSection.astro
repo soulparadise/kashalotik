@@ -1,0 +1,5 @@
+---
+interface Props { class?: string; tone?: 'white' | 'blue'; }
+const { class: className = '', tone = 'white' } = Astro.props;
+---
+<section class:list={['wave-section', `tone-${tone}`, className]}><slot /></section>

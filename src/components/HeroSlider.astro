@@ -1,0 +1,45 @@
+---
+import { site } from '@/data/site';
+const image = (name: string) => `${import.meta.env.BASE_URL}assets/images/${name}`;
+const slides = [
+  { eyebrow: 'Детский бассейн', title: 'Первые шаги\nк большим достижениям', text: 'Кашалотик — место, где дети с удовольствием учатся плавать, становятся сильнее и увереннее.', image: image('reference-hero.png') },
+  { eyebrow: 'От 1 месяца до 10 лет', title: 'Вода, игра\nи забота', text: 'Индивидуальные занятия с тренером в чистой тёплой воде 32–34 °C.', image: image('pool-action-2.webp') },
+  { eyebrow: 'Пробное занятие', title: 'Познакомимся\nс водой вместе', text: '30 минут бережного знакомства с бассейном и тренером — 1 500 ₽.', image: image('pool-action-1.webp') },
+];
+---
+<section class="hero-slider swiper" aria-label="Главные предложения">
+  <div class="swiper-wrapper">
+    {slides.map((slide, index) => (
+      <article class="swiper-slide hero-slide">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <span class="eyebrow">{slide.eyebrow}</span>
+            <h1 class="hand">{slide.title.split('\n').map(line => <>{line}<br /></>)}</h1>
+            <p>{slide.text}</p>
+            <a class="button" href={site.booking}>Записаться на пробное занятие</a>
+          </div>
+          <div class:list={["hero-media", index === 0 && "reference-media"]}><img src={slide.image} alt="Занятие в бассейне Кашалотик" loading={index === 0 ? 'eager' : 'lazy'} /></div>
+        </div>
+      </article>
+    ))}
+  </div>
+  <div class="swiper-pagination"></div>
+  <button class="slider-prev" aria-label="Предыдущий слайд">←</button>
+  <button class="slider-next" aria-label="Следующий слайд">→</button>
+</section>
+<script>
+  import Swiper from 'swiper';
+  import { Autoplay, Keyboard, Navigation, Pagination } from 'swiper/modules';
+  import 'swiper/css';
+  import 'swiper/css/navigation';
+  import 'swiper/css/pagination';
+  new Swiper('.hero-slider', {
+    modules: [Autoplay, Keyboard, Navigation, Pagination],
+    loop: true,
+    speed: 750,
+    keyboard: { enabled: true },
+    autoplay: { delay: 7000, disableOnInteraction: false, pauseOnMouseEnter: true },
+    navigation: { prevEl: '.slider-prev', nextEl: '.slider-next' },
+    pagination: { el: '.swiper-pagination', clickable: true },
+  });
+</script>

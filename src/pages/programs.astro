@@ -1,0 +1,4 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'; import PageHero from '@/components/PageHero.astro'; import WaveSection from '@/components/WaveSection.astro'; import { programs } from '@/data/content'; import { site } from '@/data/site';
+---
+<BaseLayout title="Занятия — Кашалотик" description="Программы плавания для детей разных возрастов."><main><PageHero eyebrow="Наши занятия" title="Плавание с заботой о каждом ребёнке" text="От первого знакомства с водой до уверенной техники — программу подбираем индивидуально." /><WaveSection tone="blue"><div class="container"><div class="program-grid">{programs.map(p => <article class="program-card"><img src={p.image} alt={p.title} /><div><small>{p.age}</small><h2>{p.title}</h2><p>{p.text}</p><a href={site.booking}>Записаться →</a></div></article>)}</div></div></WaveSection></main></BaseLayout>

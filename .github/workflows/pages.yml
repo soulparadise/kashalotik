@@ -1,8 +1,8 @@
-name: Deploy static site to GitHub Pages
+name: Deploy Astro preview to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [codex/astro-migration]
   workflow_dispatch:
 
 permissions:
@@ -22,10 +22,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: dist
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
