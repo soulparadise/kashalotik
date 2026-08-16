@@ -1,4 +1,6 @@
-const image = (name: string) => `${import.meta.env.BASE_URL}assets/images/${name}`;
+import { base } from './site';
+
+const image = (name: string) => `${base}assets/images/${name}`;
 
 export const programs = [
   { icon: '🫧', title: 'Грудничковое плавание', age: '1 месяц — 1 год', text: 'Мягкая адаптация к воде, дыхание, ныряние и расслабление.', image: image('pool-action-2.webp') },

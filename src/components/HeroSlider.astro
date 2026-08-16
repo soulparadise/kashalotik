@@ -1,6 +1,6 @@
 ---
-import { site } from '@/data/site';
-const image = (name: string) => `${import.meta.env.BASE_URL}assets/images/${name}`;
+import { base, site } from '@/data/site';
+const image = (name: string) => `${base}assets/images/${name}`;
 const slides = [
   { eyebrow: 'Детский бассейн', title: 'Первые шаги\nк большим достижениям', text: 'Кашалотик — место, где дети с удовольствием учатся плавать, становятся сильнее и увереннее.', image: image('reference-hero.png') },
   { eyebrow: 'От 1 месяца до 10 лет', title: 'Вода, игра\nи забота', text: 'Индивидуальные занятия с тренером в чистой тёплой воде 32–34 °C.', image: image('pool-action-2.webp') },
