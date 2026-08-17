@@ -3,7 +3,7 @@ import { base, navigation, site } from '@/data/site';
 ---
 <header class="site-header">
   <div class="container header-row">
-    <a class="brand" href={base} aria-label="Кашалотик — главная"><img src={`${base}assets/images/reference-logo.png`} alt="Кашалотик — детский бассейн" /></a>
+    <a class="brand" href={base} aria-label="Кашалотик — главная"><img src={`${base}assets/images/logo-2026.svg`} alt="Кашалотик — детский бассейн" /></a>
     <nav class="desktop-nav" aria-label="Основное меню">{navigation.map(item => <a href={item.href}>{item.label}</a>)}</nav>
     <a class="phone" href={site.phoneHref}><span>{site.phone}</span><small>{site.hours}</small></a>
     <a class="button compact" href={site.booking}>Записаться на занятие</a>

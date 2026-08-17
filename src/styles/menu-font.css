@@ -1,0 +1,11 @@
+@font-face{font-family:"Borsok";src:url("../assets/fonts/Borsok.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Nunito";src:url("../assets/fonts/Nunito-Regular.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Nunito";src:url("../assets/fonts/Nunito-Bold.ttf") format("truetype");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Nunito";src:url("../assets/fonts/Nunito-ExtraBold.ttf") format("truetype");font-weight:800 900;font-style:normal;font-display:swap}
+body{font-family:"Nunito","Segoe UI",Arial,sans-serif;font-weight:400}
+h1,h2,h3,.hand{font-family:"Borsok","Nunito",sans-serif;font-weight:400;letter-spacing:.01em}
+.desktop-nav,.mobile-nav{font-family:"Nunito","Segoe UI",Arial,sans-serif;font-weight:700}
+.button,.phone{font-family:"Nunito",sans-serif;font-weight:800}
+.page-hero p{font-size:17px;font-weight:600;line-height:1.65}
+.wave-section p{font-weight:600;line-height:1.55}
+.price-card>strong,.early-grid strong,.single-visit b{font-family:"Nunito",sans-serif;font-weight:900}

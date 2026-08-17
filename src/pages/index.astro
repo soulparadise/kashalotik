@@ -5,15 +5,20 @@ import WaveSection from '@/components/WaveSection.astro';
 import { prices, programs, trainers } from '@/data/content';
 import { base, site } from '@/data/site';
 import '@/styles/home.css';
+const homePrices = prices.map((price) => {
+  const [firstWord, ...rest] = price.title.split(' ');
+  const count = /^\d+$/.test(firstWord) ? firstWord : undefined;
+  return { ...price, count, titleText: count ? rest.join(' ') : price.title };
+});
 ---
-<BaseLayout title="Кашалотик — детский бассейн" description="Индивидуальное плавание для детей от 1 месяца до 10 лет в Москве.">
+<BaseLayout title="Кашалотик — детский бассейн" description="Индивидуальное плавание для детей от 1 месяца до 10 лет в Москве." bodyClass="home-font-concept">
   <main>
     <HeroSlider />
     <WaveSection tone="blue">
       <div class="container"><div class="section-title" data-reveal><h2 class="hand"><span>〰</span>Наши занятия<span>〰</span></h2><p>Знакомство с водой, развитие навыков и уверенное плавание.</p></div><div class="lesson-grid" data-reveal-group>{programs.slice(0,3).map(p => <article class="lesson-card"><img src={p.image} alt={p.title} /><div><h3>{p.title}</h3><strong>{p.age}</strong><p>{p.text}</p><a href={`${base}programs/`}>Подробнее →</a></div></article>)}</div></div>
     </WaveSection>
     <WaveSection>
-      <div class="container"><div class="section-title" data-reveal><h2 class="hand"><span>〰</span>Абонементы и цены<span>〰</span></h2><p>Индивидуальные занятия продолжительностью 30 или 45 минут.</p></div><div class="price-grid" data-reveal-group>{prices.map(p => <article class:list={['price-card', p.featured && 'featured']}><small>{p.featured ? 'Первое знакомство' : 'Абонемент'}</small><h3>{p.title}</h3><strong>{p.price}</strong><p>{p.note}</p>{p.extra && <p>{p.extra}</p>}{p.featured && <a class="button" href={site.booking}>Записаться</a>}</article>)}</div><div class="section-action"><a href={`${base}prices/`}>Все тарифы и условия →</a></div></div>
+      <div class="container"><div class="section-title" data-reveal><h2 class="hand"><span>〰</span>Абонементы и цены<span>〰</span></h2><p>Индивидуальные занятия продолжительностью 30 или 45 минут.</p></div><div class="price-grid" data-reveal-group>{homePrices.map(p => <article class:list={['price-card', p.featured && 'featured']}><small>{p.featured ? 'Первое знакомство' : 'Абонемент'}</small><h3>{p.count && <span class="plan-count">{p.count}</span>}{p.count && ' '}{p.titleText}</h3><strong>{p.price}</strong><p>{p.note}</p>{p.extra && <p>{p.extra}</p>}<a class="button price-cta" href={site.booking}>Записаться →</a></article>)}</div><div class="section-action"><a href={`${base}prices/`}>Все тарифы и условия →</a></div></div>
     </WaveSection>
     <WaveSection tone="blue">
       <div class="container"><div class="section-title" data-reveal><h2 class="hand"><span>〰</span>Наши тренеры<span>〰</span></h2><p>Профессионалы, искренне любящие детей и свою работу.</p></div><div class="trainer-grid" data-reveal-group>{trainers.map(t => <article class="trainer-card"><img src={t.image} alt={`${t.name}, тренер`} /><div><h3 class="hand">{t.name}</h3><p>{t.role}</p></div></article>)}</div><div class="section-action"><a href={`${base}team/`}>Познакомиться с командой →</a></div></div>
