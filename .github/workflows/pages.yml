@@ -2,7 +2,7 @@ name: Deploy Astro preview to GitHub Pages
 
 on:
   push:
-    branches: [main, codex/astro-migration]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
