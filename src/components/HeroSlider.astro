@@ -23,17 +23,24 @@ const slides = [
       </article>
     ))}
   </div>
+  <div class="container hero-trust" data-reveal-group>
+    <div><i>💧</i><span>Чистая и тёплая<br /><b>вода 32–34 °C</b></span></div>
+    <div><i>♡</i><span>Опытные тренеры<br /><b>индивидуальный подход</b></span></div>
+    <div><i>✓</i><span>Безопасность<br /><b>и комфорт</b></span></div>
+    <div><i>☺</i><span>Здоровье<br /><b>и уверенность</b></span></div>
+  </div>
   <div class="swiper-pagination"></div>
   <button class="slider-prev" aria-label="Предыдущий слайд">←</button>
   <button class="slider-next" aria-label="Следующий слайд">→</button>
 </section>
 <script>
   import Swiper from 'swiper';
+  import { animate } from 'motion';
   import { Autoplay, Keyboard, Navigation, Pagination } from 'swiper/modules';
   import 'swiper/css';
   import 'swiper/css/navigation';
   import 'swiper/css/pagination';
-  new Swiper('.hero-slider', {
+  const slider = new Swiper('.hero-slider', {
     modules: [Autoplay, Keyboard, Navigation, Pagination],
     loop: true,
     speed: 750,
@@ -42,4 +49,14 @@ const slides = [
     navigation: { prevEl: '.slider-prev', nextEl: '.slider-next' },
     pagination: { el: '.swiper-pagination', clickable: true },
   });
+  const animateSlide = () => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const active = slider.slides[slider.activeIndex];
+    const copy = active?.querySelector('.hero-copy');
+    const media = active?.querySelector('.hero-media');
+    if (copy) animate(copy, { opacity: [0, 1], x: [-22, 0] }, { duration: 0.6, ease: 'easeOut' });
+    if (media) animate(media, { opacity: [0, 1], scale: [0.97, 1] }, { duration: 0.75, ease: 'easeOut' });
+  };
+  slider.on('slideChangeTransitionStart', animateSlide);
+  animateSlide();
 </script>

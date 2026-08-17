@@ -1,0 +1,12 @@
+<script>
+  import { animate, inView, stagger } from 'motion';
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduceMotion) {
+    inView('[data-reveal]', (element) => {
+      animate(element, { opacity: [0, 1], y: [28, 0] }, { duration: 0.65, ease: 'easeOut' });
+    }, { margin: '0px 0px -8% 0px' });
+    inView('[data-reveal-group]', (group) => {
+      animate(group.querySelectorAll(':scope > *'), { opacity: [0, 1], y: [24, 0] }, { delay: stagger(0.09), duration: 0.55, ease: 'easeOut' });
+    }, { margin: '0px 0px -8% 0px' });
+  } else document.documentElement.classList.add('reduce-motion');
+</script>
