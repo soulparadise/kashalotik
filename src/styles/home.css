@@ -12,7 +12,7 @@ body.home-font-concept .lesson-card h3,body.home-font-concept .price-card h3{fon
 body.home-font-concept .trainer-card h3{font-size:30px;line-height:1.05}
 body.home-font-concept .why-panel h2{font-size:46px;line-height:1.08}
 body.home-font-concept .home-cta h2{font-size:38px;line-height:1.12}
-body.home-font-concept .desktop-nav,body.home-font-concept .phone,body.home-font-concept .button{font-family:"Nunito",sans-serif;font-weight:800}
+body.home-font-concept .phone,body.home-font-concept .button{font-family:"Nunito",sans-serif;font-weight:800}
 @media(max-width:640px){body.home-font-concept .hero-copy h1{font-size:39px}body.home-font-concept .section-title h2{font-size:36px}body.home-font-concept .why-panel h2{font-size:38px}body.home-font-concept .home-cta h2{font-size:30px}}
 
 /* Larger, slightly stronger homepage descriptions */
