@@ -1,4 +1,79 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro'; import PageHero from '@/components/PageHero.astro'; import WaveSection from '@/components/WaveSection.astro'; import { prices } from '@/data/content'; import { site } from '@/data/site';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import WaveSection from '@/components/WaveSection.astro';
+import { prices } from '@/data/content';
+import { site } from '@/data/site';
+import '@/styles/detail-pages.css';
+
+const earlyPlans = [
+  { count: '4 занятия', price: '8 600 ₽', validity: '30 дней' },
+  { count: '8 занятий', price: '15 840 ₽', validity: '30 дней' },
+  { count: '12 занятий', price: '22 680 ₽', validity: '45 дней' },
+];
 ---
-<BaseLayout title="Расписание и цены — Кашалотик" description="Расписание, абонементы и стоимость занятий."><main><PageHero eyebrow="Расписание и цены" title="Выберите удобный формат занятий" text="Мы работаем ежедневно с 9:00 до 21:00. Время выбирается при онлайн-записи." /><WaveSection tone="blue"><div class="container"><div class="schedule-bar"><span><b>Ежедневно</b>9:00–21:00</span><span><b>Индивидуально</b>ребёнок и тренер</span><span><b>Продолжительность</b>30 или 45 минут</span><a class="button" href={site.booking}>Свободное время</a></div><div class="price-grid">{prices.map(p => <article class:list={['price-card', p.featured && 'featured']}><h2>{p.title}</h2><strong>{p.price}</strong><p>{p.note}</p>{p.extra && <p>{p.extra}</p>}</article>)}</div></div></WaveSection></main></BaseLayout>
+
+<BaseLayout title="Расписание и цены — Кашалотик" description="Стоимость пробного занятия и абонементов в детский бассейн Кашалотик.">
+  <main>
+    <PageHero eyebrow="Расписание и цены" title="Удобное время для каждой семьи" text="Мы работаем ежедневно с 9:00 до 21:00. Конкретное время и тренера можно выбрать при онлайн-записи." />
+
+    <WaveSection tone="blue">
+      <div class="container schedule-bar">
+        <span><b>Ежедневно</b>9:00–21:00</span>
+        <span><b>Индивидуально</b>ребёнок и тренер</span>
+        <span><b>Продолжительность</b>30 или 45 минут</span>
+        <a class="button" href={site.booking}>Посмотреть свободное время</a>
+      </div>
+      <div class="container detail-heading centered price-heading">
+        <span>Основные абонементы</span>
+        <h2>Выберите подходящий ритм занятий</h2>
+      </div>
+      <div class="container price-grid price-grid-full">
+        {prices.map((plan) => (
+          <article class:list={['price-card', plan.featured && 'featured']}>
+            {plan.featured && <em>Для знакомства</em>}
+            <h2>{plan.title}</h2>
+            <strong>{plan.price}</strong>
+            <p>{plan.note}</p>
+            {plan.extra && <p class="price-extra">{plan.extra}</p>}
+            <a href={site.booking}>Записаться →</a>
+          </article>
+        ))}
+      </div>
+      <div class="container single-visit">
+        <div><span>Разовое занятие</span><h2>Без абонемента</h2><p>Подходит, если вы пока не готовы выбрать регулярный график.</p></div>
+        <div><b>3 000 ₽</b><small>30 минут</small></div>
+        <div><b>4 500 ₽</b><small>45 минут</small></div>
+      </div>
+    </WaveSection>
+
+    <WaveSection>
+      <div class="container early-layout">
+        <div class="detail-heading">
+          <span>Специальный тариф</span>
+          <h2>«Ранние рыбки»</h2>
+          <p>Выгодные абонементы на занятия по будням с 9:00 до 14:00.</p>
+        </div>
+        <div class="early-grid">
+          {earlyPlans.map((plan) => <article><h3>{plan.count}</h3><strong>{plan.price}</strong><p>{plan.validity}</p></article>)}
+        </div>
+      </div>
+    </WaveSection>
+
+    <WaveSection tone="blue">
+      <div class="container discounts-layout">
+        <div class="detail-heading"><span>Забота о семьях</span><h2>Скидки и подарки</h2></div>
+        <div class="benefit-list">
+          <article><b>10%</b><p>для детей с инвалидностью</p></article>
+          <article><b>10%</b><p>для многодетных семей</p></article>
+          <article><b>50%</b><p>на пробное при покупке абонемента на 4 занятия</p></article>
+          <article><b>Подарок</b><p>пробное занятие при покупке 8 или 12 занятий</p></article>
+        </div>
+      </div>
+      <div class="container notice-panel">
+        <h3>Важно перед записью</h3>
+        <p>Для пробного занятия действует предоплата 1 000 ₽. Отменить или перенести занятие без списания можно до 20:00 предыдущего дня. Абонемент на 12 занятий можно заморозить на 14 дней.</p>
+      </div>
+    </WaveSection>
+  </main>
+</BaseLayout>

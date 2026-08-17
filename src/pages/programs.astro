@@ -1,4 +1,65 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro'; import PageHero from '@/components/PageHero.astro'; import WaveSection from '@/components/WaveSection.astro'; import { programs } from '@/data/content'; import { site } from '@/data/site';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import WaveSection from '@/components/WaveSection.astro';
+import { programs } from '@/data/content';
+import { base, site } from '@/data/site';
+import '@/styles/detail-pages.css';
 ---
-<BaseLayout title="Занятия — Кашалотик" description="Программы плавания для детей разных возрастов."><main><PageHero eyebrow="Наши занятия" title="Плавание с заботой о каждом ребёнке" text="От первого знакомства с водой до уверенной техники — программу подбираем индивидуально." /><WaveSection tone="blue"><div class="container"><div class="program-grid">{programs.map(p => <article class="program-card"><img src={p.image} alt={p.title} /><div><small>{p.age}</small><h2>{p.title}</h2><p>{p.text}</p><a href={site.booking}>Записаться →</a></div></article>)}</div></div></WaveSection></main></BaseLayout>
+
+<BaseLayout title="Занятия — Кашалотик" description="Индивидуальные программы плавания для детей от одного месяца.">
+  <main>
+    <PageHero eyebrow="Наши занятия" title="Плавание с заботой о каждом ребёнке" text="От первого знакомства с водой до уверенной техники — тренер подбирает программу под возраст, характер и задачи ребёнка." />
+
+    <WaveSection tone="blue">
+      <div class="container detail-heading">
+        <span>Выберите направление</span>
+        <h2>Занятия для малышей, школьников и будущих мам</h2>
+        <p>Все занятия проходят индивидуально. Продолжительность — 30 или 45 минут.</p>
+      </div>
+      <div class="container program-grid program-grid-full">
+        {programs.map((program) => (
+          <article class="program-card">
+            <img src={program.image} alt={program.title} loading="lazy" />
+            <div>
+              <small>{program.age}</small>
+              <h2>{program.title}</h2>
+              <p>{program.text}</p>
+              <a href={site.booking}>Выбрать время <span>→</span></a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </WaveSection>
+
+    <WaveSection>
+      <div class="container detail-heading centered">
+        <span>Без стресса и спешки</span>
+        <h2>Как проходит занятие</h2>
+      </div>
+      <div class="container steps-grid">
+        <article><b>01</b><h3>Знакомимся</h3><p>Тренер узнаёт об опыте ребёнка, самочувствии и ваших целях.</p></article>
+        <article><b>02</b><h3>Привыкаем к воде</h3><p>Начинаем в комфортном темпе, через игру и доверительный контакт.</p></article>
+        <article><b>03</b><h3>Развиваем навыки</h3><p>Постепенно добавляем упражнения на дыхание, координацию и технику.</p></article>
+      </div>
+    </WaveSection>
+
+    <WaveSection tone="blue">
+      <div class="container format-panel">
+        <div>
+          <span>Формат занятий</span>
+          <h2>Только ребёнок и тренер</h2>
+          <p>Индивидуальный формат помогает уделить всё внимание одному ребёнку и менять нагрузку прямо во время занятия.</p>
+          <ul>
+            <li>Тёплая вода 32–34 °C</li>
+            <li>Занятия ежедневно с 9:00 до 21:00</li>
+            <li>Продолжительность 30 или 45 минут</li>
+            <li>Для первого визита доступно пробное занятие</li>
+          </ul>
+          <div class="button-row"><a class="button" href={site.booking}>Записаться</a><a class="text-link" href={`${base}rules/`}>Как подготовиться →</a></div>
+        </div>
+        <img src={`${base}assets/images/pool-action-1.webp`} alt="Занятие в бассейне Кашалотик" loading="lazy" />
+      </div>
+    </WaveSection>
+  </main>
+</BaseLayout>
