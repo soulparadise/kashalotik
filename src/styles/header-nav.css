@@ -1,0 +1,2 @@
+.desktop-nav{gap:16px;font-size:12px}.header-row{gap:18px}
+@media(max-width:1220px) and (min-width:1001px){.phone{display:none}.desktop-nav{gap:14px}}
