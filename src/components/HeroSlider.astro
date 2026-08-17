@@ -3,8 +3,8 @@ import { base, site } from '@/data/site';
 const image = (name: string) => `${base}assets/images/${name}`;
 const slides = [
   { eyebrow: 'Детский бассейн', title: 'Первые шаги\nк большим достижениям', text: 'Кашалотик — место, где дети с удовольствием учатся плавать, становятся сильнее и увереннее.', image: image('hero-clean-v2.webp') },
-  { eyebrow: 'От 1 месяца до 10 лет', title: 'Вода, игра\nи забота', text: 'Индивидуальные занятия с тренером в чистой тёплой воде 32–34 °C.', image: image('pool-action-2.webp') },
-  { eyebrow: 'Пробное занятие', title: 'Познакомимся\nс водой вместе', text: '30 минут бережного знакомства с бассейном и тренером — 1 500 ₽.', image: image('pool-action-1.webp') },
+  { eyebrow: 'От 1 месяца до 10 лет', title: 'Вода, игра\nи забота', text: 'Индивидуальные занятия с тренером в чистой тёплой воде 32–34 °C.', image: image('pool-action-2-enhanced.png') },
+  { eyebrow: 'Пробное занятие', title: 'Познакомимся\nс водой вместе', text: '30 минут бережного знакомства с бассейном и тренером — 1 500 ₽.', image: image('pool-action-1-enhanced.png') },
 ];
 ---
 <section class="hero-slider swiper" aria-label="Главные предложения">
@@ -18,7 +18,16 @@ const slides = [
             <p>{slide.text}</p>
             <a class="button" href={site.booking}>Записаться на пробное занятие</a>
           </div>
-          <div class:list={["hero-media", index === 0 && "reference-media"]}><img src={slide.image} alt="Занятие в бассейне Кашалотик" loading={index === 0 ? 'eager' : 'lazy'} /></div>
+          <div class:list={["hero-media", index === 0 ? "reference-media" : "playful-media"]} style={index > 0 ? `--splash-blue:url('${image('slider-splash-blue.svg')}');--splash-pink:url('${image('slider-splash-pink.svg')}')` : undefined}>
+            <img src={slide.image} alt="Занятие в бассейне Кашалотик" loading={index === 0 ? 'eager' : 'lazy'} />
+            {index > 0 && <>
+              <i class="water-splash splash-blue" aria-hidden="true"></i>
+              <i class="water-splash splash-pink" aria-hidden="true"></i>
+              <i class="water-bubble bubble-one" aria-hidden="true"></i>
+              <i class="water-bubble bubble-two" aria-hidden="true"></i>
+              <i class="water-bubble bubble-three" aria-hidden="true"></i>
+            </>}
+          </div>
         </div>
       </article>
     ))}

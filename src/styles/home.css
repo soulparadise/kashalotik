@@ -52,7 +52,17 @@ body.home-font-concept .price-card:hover .price-cta,body.home-font-concept .pric
 .hero-slider .slider-next{right:max(12px,calc(50% - 642px))}
 .hero-media.reference-media{max-height:440px}
 .hero-media.reference-media img{max-height:440px}
+.hero-media.playful-media{position:relative;overflow:visible;border-radius:0;background:none;isolation:isolate}
+.hero-media.playful-media img{position:relative;z-index:1;width:100%;height:100%;border-radius:46% 54% 42% 58% / 38% 34% 66% 62%;object-fit:cover;box-shadow:0 22px 48px #149bc326}
+.water-splash,.water-bubble{position:absolute;z-index:2;display:block;pointer-events:none}
+.water-splash{width:74px;height:60px;background:center/contain no-repeat}
+.splash-blue{left:-37px;top:22px;background-image:var(--splash-blue);transform:rotate(-50deg)}
+.splash-pink{right:-32px;bottom:22px;background-image:var(--splash-pink);transform:rotate(126deg)}
+.water-bubble{border:2px solid #7bd4f1;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff 0 10%,#dff8ff88 13%,#9de5f955 50%,transparent 72%);box-shadow:inset -3px -4px 7px #28ace538,0 5px 12px #129dcc20}
+.bubble-one{right:-17px;top:53px;width:25px;height:25px}
+.bubble-two{right:11px;top:18px;width:12px;height:12px}
+.bubble-three{left:-13px;bottom:48px;width:18px;height:18px}
 .cta-whale{width:112px;height:112px;font-size:0}
 .home-cta .cta-whale img{width:auto;height:100%;max-width:none}
 @media(max-width:900px){.trainer-grid{display:flex;gap:18px;overflow-x:auto;padding:4px 4px 20px;scroll-snap-type:x mandatory;scrollbar-width:thin}.trainer-card{flex:0 0 min(320px,78vw);scroll-snap-align:center}.trainer-card img{height:310px}}
-@media(max-width:640px){.hero-slide{padding-bottom:54px}.hero-media.reference-media,.hero-media.reference-media img{max-height:255px}.hero-copy h1{margin-top:8px}.home-cta .cta-whale{width:90px;height:90px}}
+@media(max-width:640px){.hero-slide{padding-bottom:54px}.hero-media.reference-media,.hero-media.reference-media img{max-height:255px}.water-splash{width:52px;height:42px}.splash-blue{left:-12px;top:8px}.splash-pink{right:-10px;bottom:10px}.bubble-one{right:2px}.bubble-three{left:1px}.hero-copy h1{margin-top:8px}.home-cta .cta-whale{width:90px;height:90px}}
