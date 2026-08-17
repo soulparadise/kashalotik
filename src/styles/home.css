@@ -47,7 +47,8 @@ body.home-font-concept .price-card:hover .price-cta,body.home-font-concept .pric
 @media(prefers-reduced-motion:reduce){body.home-font-concept .price-card.featured{animation:none}}
 
 /* Final visual polish */
-.slider-prev{left:calc(42% + 10px)}
+.hero-slider .slider-prev{left:18px}
+.hero-slider .slider-next{right:18px}
 .hero-media.reference-media{max-height:440px}
 .hero-media.reference-media img{max-height:440px}
 .cta-whale{width:112px;height:112px;font-size:0}
