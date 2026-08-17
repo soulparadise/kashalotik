@@ -12,12 +12,12 @@ import '@/styles/detail-pages.css';
     <PageHero eyebrow="Наши занятия" title="Плавание с заботой о каждом ребёнке" text="От первого знакомства с водой до уверенной техники — тренер подбирает программу под возраст, характер и задачи ребёнка." />
 
     <WaveSection tone="blue">
-      <div class="container detail-heading">
+      <div class="container detail-heading" data-reveal>
         <span>Выберите направление</span>
         <h2>Занятия для малышей, школьников и будущих мам</h2>
         <p>Все занятия проходят индивидуально. Продолжительность — 30 или 45 минут.</p>
       </div>
-      <div class="container program-grid program-grid-full">
+      <div class="container program-grid program-grid-full" data-reveal-group>
         {programs.map((program) => (
           <article class="program-card">
             <img src={program.image} alt={program.title} loading="lazy" />
@@ -33,11 +33,11 @@ import '@/styles/detail-pages.css';
     </WaveSection>
 
     <WaveSection>
-      <div class="container detail-heading centered">
+      <div class="container detail-heading centered" data-reveal>
         <span>Без стресса и спешки</span>
         <h2>Как проходит занятие</h2>
       </div>
-      <div class="container steps-grid">
+      <div class="container steps-grid" data-reveal-group>
         <article><b>01</b><h3>Знакомимся</h3><p>Тренер узнаёт об опыте ребёнка, самочувствии и ваших целях.</p></article>
         <article><b>02</b><h3>Привыкаем к воде</h3><p>Начинаем в комфортном темпе, через игру и доверительный контакт.</p></article>
         <article><b>03</b><h3>Развиваем навыки</h3><p>Постепенно добавляем упражнения на дыхание, координацию и технику.</p></article>
@@ -45,7 +45,7 @@ import '@/styles/detail-pages.css';
     </WaveSection>
 
     <WaveSection tone="blue">
-      <div class="container format-panel">
+      <div class="container format-panel" data-reveal>
         <div>
           <span>Формат занятий</span>
           <h2>Только ребёнок и тренер</h2>

@@ -11,20 +11,20 @@ import '@/styles/detail-pages.css';
     <PageHero eyebrow="Контакты" title="Будем рады видеть вас в «Кашалотике»" text="Приезжайте познакомиться с бассейном или позвоните — подскажем направление и поможем выбрать время." />
 
     <WaveSection tone="blue">
-      <div class="container contact-cards">
+      <div class="container contact-cards" data-reveal-group>
         <article><span>01</span><small>Наш адрес</small><h2>{site.address}</h2><a href={site.maps}>Построить маршрут →</a></article>
         <article><span>02</span><small>Режим работы</small><h2>{site.hours}</h2><p>Занятия проходят по предварительной записи.</p></article>
         <article><span>03</span><small>Связаться</small><h2><a href={site.phoneHref}>{site.phone}</a></h2><p><a href={`mailto:${site.email}`}>{site.email}</a></p><a class="button" href={site.booking}>Онлайн-запись</a></article>
       </div>
-      <div class="container map-panel">
+      <div class="container map-panel" data-reveal>
         <div><span>Как нас найти</span><h2>ТЦ «Прага», цокольный этаж</h2><p>Входите в торговый центр и спускайтесь на цокольный этаж. Если не получается найти бассейн — позвоните нам, мы сориентируем.</p><a class="button secondary" href={site.maps}>Открыть в Яндекс Картах</a></div>
         <iframe src="https://yandex.ru/map-widget/v1/?z=16&ol=biz&oid=117749875078" title="Кашалотик на карте" loading="lazy"></iframe>
       </div>
     </WaveSection>
 
     <WaveSection>
-      <div class="container detail-heading centered"><span>Первый визит</span><h2>Три простых шага</h2></div>
-      <div class="container steps-grid">
+      <div class="container detail-heading centered" data-reveal><span>Первый визит</span><h2>Три простых шага</h2></div>
+      <div class="container steps-grid" data-reveal-group>
         <article><b>01</b><h3>Выберите время</h3><p>Запишитесь онлайн или позвоните нам — поможем подобрать тренера.</p></article>
         <article><b>02</b><h3>Подготовьтесь</h3><p>Возьмите купальные принадлежности и приходите немного заранее.</p></article>
         <article><b>03</b><h3>Познакомьтесь с водой</h3><p>Тренер проведёт пробное занятие и предложит дальнейший план.</p></article>
@@ -32,9 +32,9 @@ import '@/styles/detail-pages.css';
     </WaveSection>
 
     <WaveSection tone="blue">
-      <div class="container faq-layout">
+      <div class="container faq-layout" data-reveal>
         <div class="detail-heading"><span>Подскажем заранее</span><h2>Частые вопросы</h2><p>Если вашего вопроса здесь нет, просто позвоните нам.</p></div>
-        <div class="faq-list">
+        <div class="faq-list" data-reveal-group>
           <details open><summary>Нужно ли записываться заранее?</summary><p>Да, все занятия индивидуальные и проходят по предварительной записи.</p></details>
           <details><summary>С какого возраста можно заниматься?</summary><p>У нас есть программы для малышей от одного месяца, дошкольников и школьников.</p></details>
           <details><summary>Какая температура воды?</summary><p>В бассейне поддерживается комфортная температура 32–34 °C.</p></details>

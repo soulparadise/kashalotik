@@ -3,10 +3,10 @@ interface Props { eyebrow: string; title: string; text: string; }
 const { eyebrow, title, text } = Astro.props;
 ---
 <section class="page-hero">
-  <div class="container">
+  <div class="container" data-reveal-group>
     <span class="eyebrow">{eyebrow}</span>
     <h1 class="hand">{title}</h1>
     <p>{text}</p>
   </div>
-  <span class="page-whale" aria-hidden="true">🐳</span>
+  <span class="page-whale" data-float aria-hidden="true">🐳</span>
 </section>

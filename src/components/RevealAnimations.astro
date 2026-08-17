@@ -8,5 +8,8 @@
     inView('[data-reveal-group]', (group) => {
       animate(group.querySelectorAll(':scope > *'), { opacity: [0, 1], y: [24, 0] }, { delay: stagger(0.09), duration: 0.55, ease: 'easeOut' });
     }, { margin: '0px 0px -8% 0px' });
+    document.querySelectorAll('[data-float]').forEach((element) => {
+      animate(element, { y: [0, -9, 0], rotate: [-7, -4, -7] }, { duration: 4.2, repeat: Infinity, ease: 'easeInOut' });
+    });
   } else document.documentElement.classList.add('reduce-motion');
 </script>
