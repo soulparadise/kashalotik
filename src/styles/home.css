@@ -47,8 +47,9 @@ body.home-font-concept .price-card:hover .price-cta,body.home-font-concept .pric
 @media(prefers-reduced-motion:reduce){body.home-font-concept .price-card.featured{animation:none}}
 
 /* Final visual polish */
-.hero-slider .slider-prev{left:18px}
-.hero-slider .slider-next{right:18px}
+.hero-slider .slider-prev,.hero-slider .slider-next{top:50%;transform:translateY(-50%)}
+.hero-slider .slider-prev{left:max(12px,calc(50% - 642px))}
+.hero-slider .slider-next{right:max(12px,calc(50% - 642px))}
 .hero-media.reference-media{max-height:440px}
 .hero-media.reference-media img{max-height:440px}
 .cta-whale{width:112px;height:112px;font-size:0}
