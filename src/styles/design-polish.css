@@ -10,7 +10,7 @@ h3{font-family:"Nunito","Segoe UI",Arial,sans-serif;font-weight:900;letter-spaci
 .page-hero h1{max-width:740px;font-size:clamp(46px,4.6vw,58px);line-height:1.03}
 .page-hero p{max-width:680px;color:var(--muted);font-size:16px;line-height:1.6}
 .mascot-crop{display:block;overflow:hidden}.mascot-crop img{width:auto;height:100%;max-width:none}
-.page-whale{top:48px;right:max(7vw,55px);width:130px;height:130px;font-size:0;filter:drop-shadow(0 14px 18px #0874a926)}
+.page-hero-inner{position:relative}.page-hero-copy{max-width:780px}.page-whale{top:50%;right:18px;width:130px;height:130px;margin-top:-65px;font-size:0;filter:drop-shadow(0 14px 18px #0874a926)}
 .program-card h2,.price-card h2,.steps-grid h3,.early-grid h3,.contact-cards h2,.water-steps h3,.team-profile h2,.rules-grid h2{font-family:"Nunito",sans-serif;font-weight:900;letter-spacing:0}
 .program-card p,.steps-grid p,.contact-cards p,.water-steps p,.rules-grid p,.rules-grid li,.team-profile p{color:var(--muted);font-size:14px;line-height:1.55}
 .program-card a,.lesson-card a,.section-action>a:not(.button),.why-link a,.contact-cards article>a:not(.button),.text-link{color:var(--link)}
@@ -20,4 +20,4 @@ h3{font-family:"Nunito","Segoe UI",Arial,sans-serif;font-weight:900;letter-spaci
 .footer-nav{justify-content:flex-start;margin-top:30px;padding-top:22px;border-top:1px solid var(--line);font-size:13px}.footer-legal{margin-top:18px;color:var(--muted);font-size:12px}
 .team-profile blockquote{font-family:"Nunito",sans-serif;font-size:16px;font-style:italic;font-weight:700}
 @media(max-width:1000px){.footer-layout{grid-template-columns:1fr 1fr}.footer-brand{grid-column:1/-1}.footer-layout>.button{justify-self:start}}
-@media(max-width:640px){.wave-section{padding:54px 0}.page-hero{min-height:300px;padding:42px 0 76px}.page-hero h1{max-width:320px;font-size:38px}.page-hero p{max-width:300px;font-size:15px}.page-whale{top:68px;right:-26px;width:100px;height:100px;opacity:.28}.footer-layout{grid-template-columns:1fr;gap:22px}.footer-brand{grid-column:auto}.footer-nav{align-items:flex-start}.footer-legal{font-size:11px}}
+@media(max-width:640px){.wave-section{padding:54px 0}.page-hero{min-height:300px;padding:42px 0 76px}.page-hero h1{max-width:320px;font-size:38px}.page-hero p{max-width:300px;font-size:15px}.page-whale{top:50%;right:0;width:92px;height:92px;margin-top:-46px;opacity:.24}.footer-layout{grid-template-columns:1fr;gap:22px}.footer-brand{grid-column:auto}.footer-nav{align-items:flex-start}.footer-legal{font-size:11px}}
