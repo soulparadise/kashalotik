@@ -1,15 +1,20 @@
 ---
 import { base, navigation, site } from '@/data/site';
+const currentPath = Astro.url.pathname.replace(/\/+$/, '/');
+const isActive = (href: string) => {
+  const path = new URL(href, Astro.url.origin).pathname.replace(/\/+$/, '/');
+  return path === currentPath;
+};
 ---
 <header class="site-header">
   <div class="container header-row">
     <a class="brand" href={base} aria-label="Кашалотик — главная"><img src={`${base}assets/images/logo-2026.svg`} alt="Кашалотик — детский бассейн" /></a>
-    <nav class="desktop-nav" aria-label="Основное меню">{navigation.map(item => <a href={item.href}>{item.label}</a>)}</nav>
+    <nav class="desktop-nav" aria-label="Основное меню">{navigation.map(item => <a class:list={{ active: isActive(item.href) }} aria-current={isActive(item.href) ? 'page' : undefined} href={item.href}>{item.label}</a>)}</nav>
     <a class="phone" href={site.phoneHref}><span>{site.phone}</span><small>{site.hours}</small></a>
     <a class="button compact" href={site.booking}>Записаться на занятие</a>
     <button class="menu-button" type="button" aria-label="Открыть меню" aria-expanded="false">☰</button>
   </div>
-  <nav class="mobile-nav" aria-label="Мобильное меню">{navigation.map(item => <a href={item.href}>{item.label}</a>)}</nav>
+  <nav class="mobile-nav" aria-label="Мобильное меню">{navigation.map(item => <a class:list={{ active: isActive(item.href) }} aria-current={isActive(item.href) ? 'page' : undefined} href={item.href}>{item.label}</a>)}</nav>
 </header>
 <script>
   const button = document.querySelector<HTMLButtonElement>('.menu-button');

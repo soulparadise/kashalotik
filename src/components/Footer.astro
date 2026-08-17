@@ -2,15 +2,18 @@
 import { base, site } from '@/data/site';
 ---
 <footer class="site-footer">
-  <div class="container footer-row">
-    <span>⌖ {site.address}</span>
-    <a href={site.phoneHref}>{site.phone}</a>
-    <a href={`mailto:${site.email}`}>{site.email}</a>
-    <span>Информация не является публичной офертой</span>
+  <div class="container footer-layout">
+    <a class="footer-brand" href={base} aria-label="Кашалотик — главная"><img src={`${base}assets/images/logo-2026.svg`} alt="Кашалотик — детский бассейн" /></a>
+    <div class="footer-contact"><b>Приходите в гости</b><span>{site.address}</span><span>{site.hours}</span></div>
+    <div class="footer-contact"><b>Свяжитесь с нами</b><a href={site.phoneHref}>{site.phone}</a><a href={`mailto:${site.email}`}>{site.email}</a></div>
+    <a class="button compact" href={site.booking}>Записаться</a>
   </div>
   <nav class="container footer-nav" aria-label="Дополнительная навигация">
+    <a href={`${base}programs/`}>Занятия</a>
+    <a href={`${base}prices/`}>Расписание и цены</a>
     <a href={`${base}team/`}>Команда</a>
     <a href={`${base}safety/`}>Водоподготовка</a>
     <a href={`${base}rules/`}>Правила посещения</a>
   </nav>
+  <div class="container footer-legal">Информация на сайте не является публичной офертой.</div>
 </footer>

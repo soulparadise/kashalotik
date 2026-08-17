@@ -5,11 +5,11 @@
 
 /* Local homepage typography concept: Borsok + Nunito */
 body.home-font-concept{font-family:"Nunito","Segoe UI",Arial,sans-serif;font-weight:400}
-body.home-font-concept h1,body.home-font-concept h2,body.home-font-concept h3,body.home-font-concept .hand{font-family:"Borsok","Nunito",sans-serif;font-weight:400;letter-spacing:.01em}
+body.home-font-concept h1,body.home-font-concept h2,body.home-font-concept .hand{font-family:"Borsok","Nunito",sans-serif;font-weight:400;letter-spacing:.01em}
 body.home-font-concept .hero-copy h1{font-size:clamp(44px,4.8vw,62px);line-height:1.04}
 body.home-font-concept .section-title h2{font-size:clamp(38px,4vw,48px);line-height:1.08}
-body.home-font-concept .lesson-card h3,body.home-font-concept .price-card h3{font-size:22px;line-height:1.12}
-body.home-font-concept .trainer-card h3{font-size:30px;line-height:1.05}
+body.home-font-concept .lesson-card h3,body.home-font-concept .price-card h3{font-family:"Nunito",sans-serif;font-size:21px;font-weight:900;line-height:1.15}
+body.home-font-concept .trainer-card h3{font-family:"Nunito",sans-serif;font-size:24px;font-weight:900;line-height:1.1}
 body.home-font-concept .why-panel h2{font-size:46px;line-height:1.08}
 body.home-font-concept .home-cta h2{font-size:38px;line-height:1.12}
 body.home-font-concept .phone,body.home-font-concept .button{font-family:"Nunito",sans-serif;font-weight:800}
@@ -28,7 +28,7 @@ body.home-font-concept .hero-trust span{font-size:11px;font-weight:600;line-heig
 
 /* Animated price cards */
 body.home-font-concept .price-grid{align-items:stretch}
-body.home-font-concept .price-card{display:flex;flex-direction:column;align-items:center;min-height:285px;overflow:hidden;border:2px solid transparent;text-align:center;transition:transform .32s ease,box-shadow .32s ease,border-color .32s ease,background-color .32s ease}
+body.home-font-concept .price-card{display:flex;flex-direction:column;align-items:center;min-height:300px;overflow:hidden;border:2px solid transparent;text-align:center;transition:transform .32s ease,box-shadow .32s ease,border-color .32s ease,background-color .32s ease}
 body.home-font-concept .price-card:hover,body.home-font-concept .price-card:focus-within{transform:translateY(-9px) scale(1.015);border-color:#f6a2c0;background:#fffafd;box-shadow:0 24px 54px #f05d9328}
 body.home-font-concept .price-card.featured{border-color:#75d4f2;background:linear-gradient(145deg,#effbff,#dff6ff);box-shadow:0 18px 46px #15a9df2b;animation:trial-card-glow 2.8s ease-in-out infinite}
 body.home-font-concept .price-card.featured:hover,body.home-font-concept .price-card.featured:focus-within{border-color:#35b9e7;background:linear-gradient(145deg,#effbff,#d8f3ff);animation-play-state:paused}
@@ -42,7 +42,15 @@ body.home-font-concept .price-card>p{margin:6px 0}
 body.home-font-concept .price-card>strong+p{margin-top:14px}
 body.home-font-concept .price-card>p+p{margin-top:0}
 body.home-font-concept .price-card:hover strong,body.home-font-concept .price-card:focus-within strong{color:var(--pink);transform:scale(1.03)}
-body.home-font-concept .price-cta{align-self:center;height:48px;margin-top:auto;padding:13px 24px;opacity:0;visibility:hidden;transform:translateY(12px);pointer-events:none;transition:opacity .28s ease,transform .28s ease,visibility .28s ease}
-body.home-font-concept .price-card:hover .price-cta,body.home-font-concept .price-card:focus-within .price-cta{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto}
-@media(hover:none),(max-width:640px){body.home-font-concept .price-cta{opacity:1;visibility:visible;transform:none;pointer-events:auto}}
+body.home-font-concept .price-cta{align-self:center;height:46px;margin-top:auto;padding:11px 22px;border:2px solid var(--pink);background:#fff;color:var(--pink);box-shadow:none;opacity:1;visibility:visible;transform:none;pointer-events:auto;transition:color .25s ease,background .25s ease,box-shadow .25s ease,transform .25s ease}
+body.home-font-concept .price-card:hover .price-cta,body.home-font-concept .price-card:focus-within .price-cta{background:var(--pink);color:#fff;box-shadow:0 10px 25px #f76b9d40;transform:translateY(-2px)}
 @media(prefers-reduced-motion:reduce){body.home-font-concept .price-card.featured{animation:none}}
+
+/* Final visual polish */
+.slider-prev{left:calc(42% + 10px)}
+.hero-media.reference-media{max-height:440px}
+.hero-media.reference-media img{max-height:440px}
+.cta-whale{width:112px;height:112px;font-size:0}
+.home-cta .cta-whale img{width:auto;height:100%;max-width:none}
+@media(max-width:900px){.trainer-grid{display:flex;gap:18px;overflow-x:auto;padding:4px 4px 20px;scroll-snap-type:x mandatory;scrollbar-width:thin}.trainer-card{flex:0 0 min(320px,78vw);scroll-snap-align:center}.trainer-card img{height:310px}}
+@media(max-width:640px){.hero-slide{padding-bottom:54px}.hero-media.reference-media,.hero-media.reference-media img{max-height:255px}.hero-copy h1{margin-top:8px}.home-cta .cta-whale{width:90px;height:90px}}

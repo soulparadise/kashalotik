@@ -1,0 +1,23 @@
+:root{--muted:#496b88;--link:#078fbd}
+h3{font-family:"Nunito","Segoe UI",Arial,sans-serif;font-weight:900;letter-spacing:0}
+.site-header{border-bottom:1px solid #dceef6;box-shadow:0 7px 24px #0b66800b}
+.desktop-nav a,.mobile-nav a{position:relative;padding:8px 0;transition:color .2s ease}
+.desktop-nav a.active,.mobile-nav a.active{color:var(--pink)}
+.desktop-nav a.active:after{content:"";position:absolute;right:14%;bottom:1px;left:14%;height:3px;border-radius:99px;background:var(--pink)}
+.mobile-nav a.active{padding-left:12px;border-left:3px solid var(--pink)}
+.wave-section{padding:72px 0}
+.page-hero{min-height:330px;padding:54px 0 88px}
+.page-hero h1{max-width:740px;font-size:clamp(46px,4.6vw,58px);line-height:1.03}
+.page-hero p{max-width:680px;color:var(--muted);font-size:16px;line-height:1.6}
+.mascot-crop{display:block;overflow:hidden}.mascot-crop img{width:auto;height:100%;max-width:none}
+.page-whale{top:48px;right:max(7vw,55px);width:130px;height:130px;font-size:0;filter:drop-shadow(0 14px 18px #0874a926)}
+.program-card h2,.price-card h2,.steps-grid h3,.early-grid h3,.contact-cards h2,.water-steps h3,.team-profile h2,.rules-grid h2{font-family:"Nunito",sans-serif;font-weight:900;letter-spacing:0}
+.program-card p,.steps-grid p,.contact-cards p,.water-steps p,.rules-grid p,.rules-grid li,.team-profile p{color:var(--muted);font-size:14px;line-height:1.55}
+.program-card a,.lesson-card a,.section-action>a:not(.button),.why-link a,.contact-cards article>a:not(.button),.text-link{color:var(--link)}
+.site-footer{padding:48px 0 28px;border-top:1px solid var(--line);background:#fff}
+.footer-layout{display:grid;grid-template-columns:220px 1.25fr .8fr auto;gap:36px;align-items:center}
+.footer-brand img{width:210px}.footer-contact{display:flex;flex-direction:column;gap:5px;color:var(--muted);font-size:14px}.footer-contact b{color:var(--blue);font-size:15px}.footer-contact a{color:var(--blue);font-weight:800}
+.footer-nav{justify-content:flex-start;margin-top:30px;padding-top:22px;border-top:1px solid var(--line);font-size:13px}.footer-legal{margin-top:18px;color:var(--muted);font-size:12px}
+.team-profile blockquote{font-family:"Nunito",sans-serif;font-size:16px;font-style:italic;font-weight:700}
+@media(max-width:1000px){.footer-layout{grid-template-columns:1fr 1fr}.footer-brand{grid-column:1/-1}.footer-layout>.button{justify-self:start}}
+@media(max-width:640px){.wave-section{padding:54px 0}.page-hero{min-height:300px;padding:42px 0 76px}.page-hero h1{max-width:320px;font-size:38px}.page-hero p{max-width:300px;font-size:15px}.page-whale{top:68px;right:-26px;width:100px;height:100px;opacity:.28}.footer-layout{grid-template-columns:1fr;gap:22px}.footer-brand{grid-column:auto}.footer-nav{align-items:flex-start}.footer-legal{font-size:11px}}
