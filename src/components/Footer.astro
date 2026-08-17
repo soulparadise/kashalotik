@@ -1,5 +1,5 @@
 ---
-import { site } from '@/data/site';
+import { base, site } from '@/data/site';
 ---
 <footer class="site-footer">
   <div class="container footer-row">
@@ -8,4 +8,9 @@ import { site } from '@/data/site';
     <a href={`mailto:${site.email}`}>{site.email}</a>
     <span>Информация не является публичной офертой</span>
   </div>
+  <nav class="container footer-nav" aria-label="Дополнительная навигация">
+    <a href={`${base}team/`}>Команда</a>
+    <a href={`${base}safety/`}>Водоподготовка</a>
+    <a href={`${base}rules/`}>Правила посещения</a>
+  </nav>
 </footer>

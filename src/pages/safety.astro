@@ -1,0 +1,19 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import WaveSection from '@/components/WaveSection.astro';
+const steps = [
+  ['Грубая фильтрация','Механическая очистка циркулирующей воды.'],
+  ['Тонкая фильтрация','Самостерилизующееся кварцевое стекло вместо стандартного песка.'],
+  ['Обеззараживание','Автоматическое дозирование гипохлорита натрия и ультрафиолетовая установка.'],
+  ['Контроль pH','Постоянный электронный анализ в рабочем диапазоне 7,2–7,6.'],
+  ['Подогрев','Комфортные 32–34 °C для малышей.'],
+];
+---
+<BaseLayout title="Водоподготовка — Кашалотик" description="Система очистки и контроля воды в бассейне Кашалотик.">
+  <main>
+    <PageHero eyebrow="Безопасность" title="Как мы заботимся о воде" text="Система водоподготовки работает круглосуточно, а полный водообмен происходит каждые два часа." />
+    <WaveSection tone="blue" class="safety-page"><div class="container safety-layout"><div><div class="inner-title" data-reveal><h2 class="hand">Пять ступеней очистки</h2><p>Постоянный контроль помогает сохранять воду чистой и комфортной для детской кожи.</p></div><div class="water-steps" data-reveal-group>{steps.map(([title,text],index) => <article><b>{index+1}</b><div><h3>{title}</h3><p>{text}</p></div></article>)}</div></div><img data-reveal src={`${import.meta.env.BASE_URL}assets/images/pool-toy.webp`} alt="Инвентарь в бассейне Кашалотик" /></div></WaveSection>
+    <WaveSection><div class="container fact-panel" data-reveal><span>24/7</span><div><h2 class="hand">Круглосуточный контроль</h2><p>Автоматическая станция очистки работает непрерывно. Комбинация безопасной концентрации хлора и ультрафиолета помогает уничтожать бактерии и вирусы.</p></div></div></WaveSection>
+  </main>
+</BaseLayout>

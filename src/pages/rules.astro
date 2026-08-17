@@ -1,0 +1,13 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import WaveSection from '@/components/WaveSection.astro';
+const before = ['Снимите верхнюю одежду и уличную обувь.','Перед занятием примите душ с мылом без купального костюма.','После душа наденьте купальник или плавки, сланцы и шапочку.','Заходите в воду только после приглашения тренера.'];
+const things = ['Купальный костюм или плавки','Шапочка и сменная обувь','Полотенце и принадлежности для душа','Для малыша — подгузник для плавания','Абонемент'];
+---
+<BaseLayout title="Правила — Кашалотик" description="Правила посещения детского бассейна Кашалотик.">
+  <main>
+    <PageHero eyebrow="Правила посещения" title="Спокойное занятие начинается с подготовки" text="Простые правила помогают сохранять чистоту воды и комфорт всех гостей." />
+    <WaveSection tone="blue" class="rules-page"><div class="container rules-grid"><article data-reveal><span>01</span><h2 class="hand">Перед бассейном</h2><ol>{before.map(item => <li>{item}</li>)}</ol></article><article data-reveal><span>02</span><h2 class="hand">Что взять с собой</h2><ul>{things.map(item => <li>{item}</li>)}</ul></article><article data-reveal><span>03</span><h2 class="hand">После занятия</h2><p>Примите душ, вытрите ребёнка и высушите волосы. После этого можно отдохнуть в игровой зоне.</p></article><article class="rule-important" data-reveal><span>!</span><h2 class="hand">Перенос и отмена</h2><p>Сообщите администратору до 20:00 предшествующего дня. При отмене день в день занятие считается проведённым.</p></article></div></WaveSection>
+  </main>
+</BaseLayout>

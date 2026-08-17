@@ -1,0 +1,17 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import WaveSection from '@/components/WaveSection.astro';
+import { trainers } from '@/data/content';
+import { site } from '@/data/site';
+---
+<BaseLayout title="Команда — Кашалотик" description="Тренеры детского бассейна Кашалотик.">
+  <main>
+    <PageHero eyebrow="Наша команда" title="Тренеры с открытым сердцем" text="Люди, которые любят детей, слышат их и бережно знакомят с водой." />
+    <WaveSection tone="blue" class="team-page">
+      <div class="container team-page-grid" data-reveal-group>
+        {trainers.map(trainer => <article class="team-profile"><img src={trainer.image} alt={`${trainer.name}, тренер Кашалотика`} /><div><span>Тренер по плаванию</span><h2 class="hand">{trainer.name}</h2><p>{trainer.role}</p><blockquote>«{trainer.quote}»</blockquote><a class="button" href={site.booking}>Записаться к тренеру</a></div></article>)}
+      </div>
+    </WaveSection>
+  </main>
+</BaseLayout>
