@@ -8,8 +8,87 @@ import '@/styles/header-nav.css';
 import '@/styles/animations.css';
 import '@/styles/menu-font.css';
 import '@/styles/design-polish.css';
-interface Props { title: string; description: string; bodyClass?: string; }
-const { title, description, bodyClass } = Astro.props;
+interface Props {
+  title: string;
+  description: string;
+  bodyClass?: string;
+  image?: string;
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
+}
+const { title, description, bodyClass, image, structuredData } = Astro.props;
+const productionOrigin = 'https://kashalotik.ru';
+const basePath = import.meta.env.BASE_URL;
+const currentPath = Astro.url.pathname;
+const productionPath = basePath !== '/' && currentPath.startsWith(basePath)
+  ? `/${currentPath.slice(basePath.length)}`
+  : currentPath;
+const canonical = new URL(productionPath, productionOrigin).toString();
+const previewBuild = basePath !== '/';
+const socialImage = new URL(image || '/assets/images/hero-clean-v2.webp', productionOrigin).toString();
+const breadcrumbNames: Record<string, string> = {
+  '/programs/': 'Занятия',
+  '/prices/': 'Расписание и цены',
+  '/team/': 'Команда',
+  '/safety/': 'Водоподготовка',
+  '/rules/': 'Правила посещения',
+  '/contacts/': 'Контакты',
+};
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'HealthClub',
+    '@id': `${productionOrigin}/#business`,
+    name: 'Кашалотик',
+    alternateName: 'Детский бассейн Кашалотик',
+    url: `${productionOrigin}/`,
+    logo: `${productionOrigin}/assets/images/logo-2026.svg`,
+    image: socialImage,
+    telephone: '+7-925-980-00-17',
+    email: 'baby_swim@mail.ru',
+    priceRange: '₽₽',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Россошанский проезд, 3, ТЦ «Прага», цокольный этаж',
+      addressLocality: 'Москва',
+      addressRegion: 'Москва',
+      addressCountry: 'RU',
+    },
+    areaServed: { '@type': 'City', name: 'Москва' },
+    openingHoursSpecification: [{
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      opens: '09:00',
+      closes: '21:00',
+    }],
+    sameAs: ['https://yandex.ru/maps/org/kashalotik/117749875078/'],
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Занятия плаванием для детей',
+      itemListElement: [
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Грудничковое плавание' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Раннее плавание' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Индивидуальные занятия плаванием для детей' } },
+      ],
+    },
+  },
+  ...(productionPath === '/' ? [{
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${productionOrigin}/#website`,
+    url: `${productionOrigin}/`,
+    name: 'Кашалотик',
+    alternateName: 'Детский бассейн Кашалотик',
+    inLanguage: 'ru-RU',
+  }] : [{
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Главная', item: `${productionOrigin}/` },
+      { '@type': 'ListItem', position: 2, name: breadcrumbNames[productionPath] || title, item: canonical },
+    ],
+  }]),
+  ...(!structuredData ? [] : Array.isArray(structuredData) ? structuredData : [structuredData]),
+];
 ---
 <!doctype html>
 <html lang="ru">
@@ -18,7 +97,23 @@ const { title, description, bodyClass } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#ffffff" />
+    {previewBuild && <meta name="robots" content="noindex, nofollow, noarchive" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/png" href={`${basePath}assets/images/reference-logo.png`} />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Кашалотик" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:alt" content="Детский бассейн Кашалотик" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
     <title>{title}</title>
+    {schemas.map(schema => <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />)}
   </head>
   <body class={bodyClass}>
     <Header />

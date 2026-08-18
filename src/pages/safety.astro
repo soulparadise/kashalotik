@@ -10,7 +10,7 @@ const steps = [
   ['Подогрев','Комфортные 32–34 °C для малышей.'],
 ];
 ---
-<BaseLayout title="Водоподготовка — Кашалотик" description="Система очистки и контроля воды в бассейне Кашалотик.">
+<BaseLayout title="Очистка и безопасность воды в детском бассейне | Кашалотик" description="Как устроена водоподготовка в бассейне «Кашалотик»: пять ступеней очистки, круглосуточный контроль и полный водообмен каждые два часа.">
   <main>
     <PageHero eyebrow="Безопасность" title="Как мы заботимся о воде" text="Система водоподготовки работает круглосуточно, а полный водообмен происходит каждые два часа." />
     <WaveSection tone="blue" class="safety-page"><div class="container safety-layout"><div><div class="inner-title" data-reveal><h2 class="hand">Пять ступеней очистки</h2><p>Постоянный контроль помогает сохранять воду чистой и комфортной для детской кожи.</p></div><div class="water-steps" data-reveal-group>{steps.map(([title,text],index) => <article><b>{index+1}</b><div><h3>{title}</h3><p>{text}</p></div></article>)}</div></div><img data-reveal src={`${import.meta.env.BASE_URL}assets/images/pool-toy.webp`} alt="Инвентарь в бассейне Кашалотик" /></div></WaveSection>

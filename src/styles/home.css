@@ -66,3 +66,10 @@ body.home-font-concept .price-card:hover .price-cta,body.home-font-concept .pric
 .home-cta .cta-whale img{width:auto;height:100%;max-width:none}
 @media(max-width:900px){.trainer-grid{display:flex;gap:18px;overflow-x:auto;padding:4px 4px 20px;scroll-snap-type:x mandatory;scrollbar-width:thin}.trainer-card{flex:0 0 min(320px,78vw);scroll-snap-align:center}.trainer-card img{height:310px}}
 @media(max-width:640px){.hero-slide{padding-bottom:54px}.hero-media.reference-media,.hero-media.reference-media img{max-height:255px}.water-splash{width:52px;height:42px}.splash-blue{left:-12px;top:8px}.splash-pink{right:-10px;bottom:10px}.bubble-one{right:2px}.bubble-three{left:1px}.hero-copy h1{margin-top:8px}.home-cta .cta-whale{width:90px;height:90px}}
+
+/* SEO/conversion hero refinements */
+.hero-copy .hero-title{margin:10px 0 22px;font-size:clamp(44px,4.8vw,62px);line-height:1.04}
+.hero-copy>p{max-width:450px;margin-bottom:18px}
+.hero-proof{display:flex;flex-wrap:wrap;gap:8px;margin:-2px 0 20px}
+.hero-proof span{padding:7px 11px;border:1px solid #bfe9f7;border-radius:999px;background:#f2fbff;color:var(--blue);font-family:"Nunito",sans-serif;font-size:12px;font-weight:800}
+@media(max-width:640px){.hero-copy .hero-title{margin-top:8px;font-size:39px}.hero-proof{margin-bottom:18px}.hero-proof span{font-size:11px}}
