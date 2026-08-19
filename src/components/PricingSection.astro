@@ -1,0 +1,139 @@
+---
+import WaveSection from '@/components/WaveSection.astro';
+import { site } from '@/data/site';
+import { singleVisitOffer, subscriptionCategories, subscriptionConditions, trialOffer } from '@/data/pricing';
+import '@/styles/pricing-section.css';
+---
+
+<WaveSection class="pricing-section">
+  <div class="container pricing-shell" data-pricing>
+    <div class="section-title" data-reveal>
+      <h2 class="hand"><span>〰</span>Абонементы и цены<span>〰</span></h2>
+      <p>Выберите комфортную продолжительность и ритм индивидуальных занятий.</p>
+    </div>
+
+    <div class="intro-offers" data-reveal-group>
+      <article class="intro-price-card trial-offer">
+        <div class="offer-heading">
+          <small>{trialOffer.eyebrow}</small>
+          <h3>{trialOffer.title}</h3>
+          <p>{trialOffer.format}</p>
+        </div>
+        <div class="trial-main-price">
+          <span>{trialOffer.duration}</span>
+          <strong>{trialOffer.price}</strong>
+          <b>{trialOffer.prepayment}</b>
+        </div>
+        <details>
+          <summary>Условия пробного занятия</summary>
+          <ul>{trialOffer.conditions.map(condition => <li>{condition}</li>)}</ul>
+        </details>
+        <a class="button" href={site.booking}>Записаться</a>
+      </article>
+
+      <article class="intro-price-card single-offer">
+        <div class="offer-heading">
+          <small>{singleVisitOffer.eyebrow}</small>
+          <h3>{singleVisitOffer.title}</h3>
+          <p>{singleVisitOffer.format}</p>
+        </div>
+        <div class="single-variants">
+          {singleVisitOffer.variants.map(variant => (
+            <div><span>{variant.duration}</span><strong>{variant.price}</strong></div>
+          ))}
+        </div>
+        <ul class="compact-conditions">{singleVisitOffer.conditions.map(condition => <li>{condition}</li>)}</ul>
+        <a class="button price-button-outline" href={site.booking}>Записаться</a>
+      </article>
+    </div>
+
+    <div class="subscription-area" data-reveal>
+      <div class="subscription-heading">
+        <small>Абонементы</small>
+        <h3>Выгоднее при регулярных занятиях</h3>
+        <p>Цена одного занятия уменьшается с увеличением абонемента.</p>
+      </div>
+
+      <div class="pricing-tabs" role="tablist" aria-label="Категории абонементов">
+        {subscriptionCategories.map((category, index) => (
+          <button
+            type="button"
+            role="tab"
+            id={`tab-${category.id}`}
+            aria-controls={`panel-${category.id}`}
+            aria-selected={index === 0 ? 'true' : 'false'}
+            tabindex={index === 0 ? 0 : -1}
+            data-price-tab={category.id}
+          >{category.label}</button>
+        ))}
+      </div>
+
+      <div class="pricing-panels">
+        {subscriptionCategories.map((category, index) => (
+          <section
+            class="pricing-panel"
+            id={`panel-${category.id}`}
+            role="tabpanel"
+            aria-labelledby={`tab-${category.id}`}
+            hidden={index !== 0}
+            data-price-panel={category.id}
+          >
+            <div class="active-category-heading">
+              <div><small>{category.note || 'Индивидуальные занятия'}</small><h4>{category.title}</h4></div>
+              <span>{category.duration} · тренер + ребёнок</span>
+            </div>
+            <div class="subscription-grid">
+              {category.plans.map(plan => (
+                <article class:list={['subscription-card', plan.featured && 'is-best']}>
+                  {plan.featured && <em>Самая выгодная цена</em>}
+                  <h4><strong>{plan.sessions}</strong> занятия</h4>
+                  <div class="subscription-price">{plan.price}</div>
+                  <p class="per-session">{plan.perSession} / занятие</p>
+                  <dl>
+                    <div><dt>Срок действия</dt><dd>{plan.validity}</dd></div>
+                    <div><dt>Заморозка</dt><dd>{plan.freeze}</dd></div>
+                  </dl>
+                  <a class="button price-button-outline" href={site.booking}>Записаться</a>
+                </article>
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+
+      <div class="subscription-note">
+        <b>Общие условия</b>
+        <ul>{subscriptionConditions.map(condition => <li>{condition}</li>)}</ul>
+      </div>
+    </div>
+  </div>
+</WaveSection>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-pricing]').forEach((section) => {
+    const tabs = [...section.querySelectorAll<HTMLButtonElement>('[data-price-tab]')];
+    const panels = [...section.querySelectorAll<HTMLElement>('[data-price-panel]')];
+
+    const activate = (tab: HTMLButtonElement) => {
+      const id = tab.dataset.priceTab;
+      tabs.forEach(item => {
+        const active = item === tab;
+        item.setAttribute('aria-selected', String(active));
+        item.tabIndex = active ? 0 : -1;
+      });
+      panels.forEach(panel => { panel.hidden = panel.dataset.pricePanel !== id; });
+    };
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => activate(tab));
+      tab.addEventListener('keydown', (event) => {
+        if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+        event.preventDefault();
+        const direction = event.key === 'ArrowRight' ? 1 : -1;
+        const next = tabs[(index + direction + tabs.length) % tabs.length];
+        activate(next);
+        next.focus();
+      });
+    });
+  });
+</script>

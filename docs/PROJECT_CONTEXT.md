@@ -29,11 +29,13 @@
 - `src/components/Header.astro` — единая шапка и навигация.
 - `src/components/Footer.astro` — единый подвал.
 - `src/components/HeroSlider.astro` — главный слайдер.
+- `src/components/PricingSection.astro` — интерактивный блок тарифов на главной.
 - `src/components/PageHero.astro` — общий верхний блок внутренних страниц и говорящий кит.
 - `src/components/WaveSection.astro` — секции с волнистыми переходами.
 - `src/components/RevealAnimations.astro` — общие анимации появления.
 - `src/data/site.ts` — контакты, ссылки и навигация.
 - `src/data/content.ts` — повторно используемый контент.
+- `src/data/pricing.ts` — пробное, разовое и все категории абонементов с условиями.
 - `src/styles/` — глобальные, домашние, внутренние и анимационные стили.
 - `public/assets/images/` — логотипы, фотографии и декоративные изображения.
 
