@@ -3,3 +3,15 @@
 @media(max-width:640px){.intro-price-card{grid-template-columns:1fr;padding:24px}.intro-price-card .button{justify-self:stretch}.trial-main-price{padding:15px}.single-variants{grid-template-columns:1fr 1fr}.subscription-area{padding:22px 14px;border-radius:28px}.subscription-heading h3{font-size:23px}.pricing-tabs{grid-template-columns:1fr;margin:20px 0;padding:7px;border-radius:24px}.pricing-tabs button{min-height:44px}.active-category-heading{align-items:flex-start;flex-direction:column;gap:5px}.subscription-grid{grid-template-columns:1fr}.subscription-card{min-height:325px}.subscription-note{flex-direction:column;gap:8px}.subscription-note ul{padding:0}.offer-heading h3{font-size:22px}}
 @media(prefers-reduced-motion:reduce){.intro-price-card,.subscription-card,.pricing-tabs button{transition:none}}
 .single-variants strong{white-space:nowrap}
+
+/* Keep the two introductory offers equal and prevent price overlap on medium desktops. */
+.intro-offers{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}
+.intro-price-card{grid-template-columns:repeat(2,minmax(0,1fr));height:100%}
+.offer-heading{align-self:center;text-align:center}
+.intro-price-card .button{justify-self:center}
+.single-variants,.single-variants div{min-width:0}
+.single-variants strong{font-size:clamp(20px,2.1vw,25px);line-height:1.1;text-align:center}
+@media(max-width:900px){.intro-offers{grid-template-columns:1fr}}
+@media(max-width:640px){.intro-price-card{grid-template-columns:1fr}.single-variants{grid-template-columns:repeat(2,minmax(0,1fr))}.single-variants strong{font-size:22px}}
+.trial-main-price strong{font-size:clamp(30px,3.2vw,38px);white-space:nowrap}
+.trial-main-price b{font-size:11px;white-space:nowrap}
