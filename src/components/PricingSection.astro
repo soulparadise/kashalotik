@@ -3,6 +3,12 @@ import WaveSection from '@/components/WaveSection.astro';
 import { site } from '@/data/site';
 import { singleVisitOffer, subscriptionCategories, subscriptionConditions, trialOffer } from '@/data/pricing';
 import '@/styles/pricing-section.css';
+const sessionWord = (count: number) => {
+  if (count % 100 >= 11 && count % 100 <= 14) return 'занятий';
+  if (count % 10 === 1) return 'занятие';
+  if (count % 10 >= 2 && count % 10 <= 4) return 'занятия';
+  return 'занятий';
+};
 ---
 
 <WaveSection class="pricing-section">
@@ -84,9 +90,10 @@ import '@/styles/pricing-section.css';
             </div>
             <div class="subscription-grid">
               {category.plans.map(plan => (
-                <article class:list={['subscription-card', plan.featured && 'is-best']}>
-                  {plan.featured && <em>Самая выгодная цена</em>}
-                  <h4><strong>{plan.sessions}</strong> занятия</h4>
+                <article class:list={['subscription-card', plan.recommended && 'is-recommended', plan.bestValue && 'is-best-value']}>
+                  {plan.recommended && <em class="recommended-badge">Оптимальный выбор</em>}
+                  {plan.bestValue && <em class="value-badge">Самая низкая цена занятия</em>}
+                  <h4><strong>{plan.sessions}</strong> {sessionWord(plan.sessions)}</h4>
                   <div class="subscription-price">{plan.price}</div>
                   <p class="per-session">{plan.perSession} / занятие</p>
                   <dl>

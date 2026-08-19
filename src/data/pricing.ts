@@ -4,7 +4,8 @@ export interface SubscriptionPlan {
   perSession: string;
   validity: string;
   freeze: string;
-  featured?: boolean;
+  recommended?: boolean;
+  bestValue?: boolean;
 }
 
 export interface SubscriptionCategory {
@@ -51,8 +52,8 @@ export const subscriptionCategories: SubscriptionCategory[] = [
     note: 'Специальный тариф',
     plans: [
       { sessions: 4, price: '8 600 ₽', perSession: '2 150 ₽', validity: '30 дней', freeze: 'Без заморозки' },
-      { sessions: 8, price: '15 840 ₽', perSession: '1 980 ₽', validity: '30 дней', freeze: 'Без заморозки' },
-      { sessions: 12, price: '22 680 ₽', perSession: '1 890 ₽', validity: '45 дней', freeze: 'Заморозка до 14 дней', featured: true },
+      { sessions: 8, price: '15 840 ₽', perSession: '1 980 ₽', validity: '30 дней', freeze: 'Без заморозки', recommended: true },
+      { sessions: 12, price: '22 680 ₽', perSession: '1 890 ₽', validity: '45 дней', freeze: 'Заморозка до 14 дней', bestValue: true },
     ],
   },
   {
@@ -62,8 +63,8 @@ export const subscriptionCategories: SubscriptionCategory[] = [
     duration: '30 минут',
     plans: [
       { sessions: 4, price: '9 400 ₽', perSession: '2 350 ₽', validity: '30 дней', freeze: 'Без заморозки' },
-      { sessions: 8, price: '17 600 ₽', perSession: '2 200 ₽', validity: '30 дней', freeze: 'Без заморозки' },
-      { sessions: 12, price: '25 200 ₽', perSession: '2 100 ₽', validity: '45 дней', freeze: 'Заморозка до 14 дней', featured: true },
+      { sessions: 8, price: '17 600 ₽', perSession: '2 200 ₽', validity: '30 дней', freeze: 'Без заморозки', recommended: true },
+      { sessions: 12, price: '25 200 ₽', perSession: '2 100 ₽', validity: '45 дней', freeze: 'Заморозка до 14 дней', bestValue: true },
     ],
   },
   {
@@ -73,8 +74,8 @@ export const subscriptionCategories: SubscriptionCategory[] = [
     duration: '45 минут',
     plans: [
       { sessions: 4, price: '13 400 ₽', perSession: '3 350 ₽', validity: '30 дней', freeze: 'Без заморозки' },
-      { sessions: 8, price: '25 600 ₽', perSession: '3 200 ₽', validity: '30 дней', freeze: 'Без заморозки' },
-      { sessions: 12, price: '37 200 ₽', perSession: '3 100 ₽', validity: '45 дней', freeze: 'Заморозка до 14 дней', featured: true },
+      { sessions: 8, price: '25 600 ₽', perSession: '3 200 ₽', validity: '30 дней', freeze: 'Без заморозки', recommended: true },
+      { sessions: 12, price: '37 200 ₽', perSession: '3 100 ₽', validity: '45 дней', freeze: 'Заморозка до 14 дней', bestValue: true },
     ],
   },
 ];
