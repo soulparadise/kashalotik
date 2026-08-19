@@ -15,7 +15,7 @@ export const site = {
 export const navigation = [
   { href: base, label: 'О бассейне' },
   { href: `${base}programs/`, label: 'Занятия' },
-  { href: `${base}prices/`, label: 'Расписание' },
+  { href: `${base}prices/`, label: 'Цены' },
   { href: `${base}team/`, label: 'Команда' },
   { href: `${base}safety/`, label: 'Водоподготовка' },
   { href: `${base}rules/`, label: 'Правила' },

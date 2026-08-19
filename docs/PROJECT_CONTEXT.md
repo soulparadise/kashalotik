@@ -15,7 +15,7 @@
 
 - `/` — главная;
 - `/programs/` — занятия;
-- `/prices/` — расписание;
+- `/prices/` — цены и абонементы;
 - `/team/` — команда;
 - `/safety/` — водоподготовка;
 - `/rules/` — правила посещения;
@@ -29,7 +29,7 @@
 - `src/components/Header.astro` — единая шапка и навигация.
 - `src/components/Footer.astro` — единый подвал.
 - `src/components/HeroSlider.astro` — главный слайдер.
-- `src/components/PricingSection.astro` — интерактивный блок тарифов на главной.
+- `src/components/PricingSection.astro` — общий интерактивный блок тарифов на главной и странице цен.
 - `src/components/PageHero.astro` — общий верхний блок внутренних страниц и говорящий кит.
 - `src/components/WaveSection.astro` — секции с волнистыми переходами.
 - `src/components/RevealAnimations.astro` — общие анимации появления.
