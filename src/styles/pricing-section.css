@@ -21,3 +21,4 @@
 .subscription-card.is-best-value{border-color:#d3edf7;background:#fff}
 .subscription-card .recommended-badge{background:#dff6ff;color:#0878a6}
 .subscription-card .value-badge{background:#f0faff;color:#3f7892}
+.offer-conditions{align-self:end}.offer-conditions>b{display:block;margin-bottom:8px;color:var(--sky);font-size:13px;font-weight:900}.offer-conditions ul{margin:0;padding-left:18px;color:var(--muted);font-size:12px;font-weight:700;line-height:1.45}.offer-conditions li+li{margin-top:4px}.offer-conditions li::marker{color:var(--sky)}
