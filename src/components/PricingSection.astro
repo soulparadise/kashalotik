@@ -30,10 +30,15 @@ const sessionWord = (count: number) => {
           <strong>{trialOffer.price}</strong>
           <b>{trialOffer.prepayment}</b>
         </div>
-        <div class="offer-conditions">
-          <b>Условия пробного занятия</b>
-          <ul>{trialOffer.conditions.map(condition => <li>{condition}</li>)}</ul>
+        <div class="trial-promotion">
+          <span>Акция</span>
+          <div>
+            <b>{trialOffer.promotion.title}</b>
+            <p>{trialOffer.promotion.description}</p>
+            <small>{trialOffer.promotion.alternative}</small>
+          </div>
         </div>
+        <p class="offer-note">{trialOffer.note}</p>
         <a class="button" href={site.booking}>Записаться</a>
       </article>
 
@@ -48,6 +53,7 @@ const sessionWord = (count: number) => {
             <div><span>{variant.duration}</span><strong>{variant.price}</strong></div>
           ))}
         </div>
+        <p class="single-description">{singleVisitOffer.description}</p>
         <ul class="compact-conditions">{singleVisitOffer.conditions.map(condition => <li>{condition}</li>)}</ul>
         <a class="button price-button-outline" href={site.booking}>Записаться</a>
       </article>
