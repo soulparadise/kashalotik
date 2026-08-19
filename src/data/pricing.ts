@@ -14,6 +14,7 @@ export interface SubscriptionCategory {
   title: string;
   duration: string;
   note?: string;
+  schedule?: string;
   plans: SubscriptionPlan[];
 }
 
@@ -51,6 +52,7 @@ export const subscriptionCategories: SubscriptionCategory[] = [
     title: 'Абонемент «Ранние рыбки»',
     duration: '30 минут',
     note: 'Специальный тариф',
+    schedule: 'По будням с 9:00 до 15:00',
     plans: [
       { sessions: 4, price: '8 600 ₽', perSession: '2 150 ₽', validity: '30 дней', freeze: 'Без заморозки' },
       { sessions: 8, price: '15 840 ₽', perSession: '1 980 ₽', validity: '30 дней', freeze: 'Без заморозки', recommended: true },
