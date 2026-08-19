@@ -73,3 +73,6 @@ body.home-font-concept .price-card:hover .price-cta,body.home-font-concept .pric
 .hero-proof{display:flex;flex-wrap:wrap;gap:8px;margin:-2px 0 20px}
 .hero-proof span{padding:7px 11px;border:1px solid #bfe9f7;border-radius:999px;background:#f2fbff;color:var(--blue);font-family:"Nunito",sans-serif;font-size:12px;font-weight:800}
 @media(max-width:640px){.hero-copy .hero-title{margin-top:8px;font-size:39px}.hero-proof{margin-bottom:18px}.hero-proof span{font-size:11px}}
+
+/* Keep slider navigation in its own row below the benefits. */
+.hero-slider .swiper-pagination{position:relative;left:auto;right:auto;bottom:auto!important;z-index:5;display:flex;justify-content:center;align-items:center;gap:3px;min-height:22px;margin:10px auto 0}
