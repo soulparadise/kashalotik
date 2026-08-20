@@ -9,6 +9,7 @@ const sessionWord = (count: number) => {
   if (count % 10 >= 2 && count % 10 <= 4) return 'занятия';
   return 'занятий';
 };
+const schedulePlaceholder = subscriptionCategories.find(category => category.schedule)?.schedule ?? '';
 ---
 
 <WaveSection class="pricing-section">
@@ -96,10 +97,10 @@ const sessionWord = (count: number) => {
                 <div class="category-title-row">
                   <h4>{category.title}</h4>
                 </div>
-                {category.schedule && (
-                  <div class="category-schedule">
+                {schedulePlaceholder && (
+                  <div class:list={['category-schedule', !category.schedule && 'is-placeholder']} aria-hidden={category.schedule ? undefined : 'true'}>
                     <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.5 2"></path></svg>
-                    <strong>{category.schedule}</strong>
+                    <strong>{category.schedule || schedulePlaceholder}</strong>
                   </div>
                 )}
               </div>
