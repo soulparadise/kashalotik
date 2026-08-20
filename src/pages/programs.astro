@@ -2,9 +2,11 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import PageHero from '@/components/PageHero.astro';
 import WaveSection from '@/components/WaveSection.astro';
+import BookingContactButton from '@/components/BookingContactButton.astro';
 import { programs } from '@/data/content';
 import { base, site } from '@/data/site';
 import '@/styles/detail-pages.css';
+const contactBookingPrograms = new Set(['Вместе с родителем', 'Свободное плавание', 'Аква-йога и акмионика']);
 ---
 
 <BaseLayout title="Занятия плаванием для детей от 1 месяца | Кашалотик" description="Индивидуальные занятия плаванием для грудничков, дошкольников и школьников в Чертаново. Тёплая вода 32–34 °C, персональный тренер и бережная адаптация.">
@@ -25,7 +27,9 @@ import '@/styles/detail-pages.css';
               <small>{program.age}</small>
               <h2>{program.title}</h2>
               <p>{program.text}</p>
-              <a href={site.booking}>Выбрать время <span>→</span></a>
+              {contactBookingPrograms.has(program.title)
+                ? <BookingContactButton class="program-contact-button" label="Выбрать способ записи"><span>→</span></BookingContactButton>
+                : <a href={site.booking}>Выбрать время <span>→</span></a>}
             </div>
           </article>
         ))}

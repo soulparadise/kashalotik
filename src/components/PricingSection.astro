@@ -1,5 +1,6 @@
 ---
 import WaveSection from '@/components/WaveSection.astro';
+import BookingContactButton from '@/components/BookingContactButton.astro';
 import { site } from '@/data/site';
 import { singleVisitOffer, subscriptionCategories, subscriptionConditions, trialOffer } from '@/data/pricing';
 import '@/styles/pricing-section.css';
@@ -56,7 +57,7 @@ const schedulePlaceholder = subscriptionCategories.find(category => category.sch
         </div>
         <p class="single-description">{singleVisitOffer.description}</p>
         <ul class="compact-conditions">{singleVisitOffer.conditions.map(condition => <li>{condition}</li>)}</ul>
-        <a class="button price-button-outline" href={site.booking}>Записаться</a>
+        <BookingContactButton class="button price-button-outline" />
       </article>
     </div>
 

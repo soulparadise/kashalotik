@@ -7,3 +7,4 @@
 @media(max-width:1000px){.first-visit-card{grid-template-columns:1fr}.first-visit-card ol{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:800px){.first-visit-card ol{grid-template-columns:1fr}}
 @media(max-width:640px){.first-visit-card{padding:24px 20px}.first-visit-title{align-items:flex-start}.first-visit-title h2{font-size:22px}}
+.cancel-highlight{margin:16px -10px!important;padding:14px 16px;border:1px solid #f7a9c5;border-radius:17px;background:#ffe8f1;color:var(--blue)!important;box-shadow:0 8px 20px #f05d9312}.cancel-highlight strong{font-size:14px;line-height:1.55}

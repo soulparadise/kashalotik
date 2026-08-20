@@ -3,14 +3,14 @@ import { base } from './site';
 const image = (name: string) => `${base}assets/images/${name}`;
 
 export const programs = [
-  { icon: '🫧', title: 'Грудничковое плавание', age: '1 месяц — 1 год', text: 'Мягкая адаптация к воде, дыхание, ныряние и расслабление.', image: image('pool-action-2.webp') },
-  { icon: '🐳', title: 'Раннее плавание', age: '1 — 3 года', text: 'Игровые занятия и первые навыки самостоятельного плавания.', image: image('pool-action-3.webp') },
-  { icon: '⭐', title: 'Дошкольное плавание', age: '3 — 5 лет', text: 'Подготовка к уверенному плаванию спортивными стилями.', image: image('pool-toy.webp') },
-  { icon: '🥽', title: 'Школьное плавание', age: '5 — 10 лет', text: 'Техника, выносливость и подготовка к большому бассейну.', image: image('pool-action-1.webp') },
-  { icon: '💞', title: 'Вместе с родителем', age: '1 месяц — 3 года', text: 'Мама или папа в воде вместе с малышом и тренером.', image: image('pool-action-3.webp') },
-  { icon: '💙', title: 'Коррекционное плавание', age: 'Индивидуально', text: 'Водная реабилитация для детей с ОВЗ.', image: image('pool-action-2.webp') },
-  { icon: '🧘', title: 'Аква-йога и акмионика', age: 'Для будущих мам', text: 'Дыхание, расслабление и бережная физическая активность.', image: image('pool-toy.webp') },
-  { icon: '🌊', title: 'Свободное плавание', age: '30 минут — 2 500 ₽', text: 'Родитель и ребёнок плавают самостоятельно без тренера.', image: image('pool-action-1.webp') },
+  { icon: '🫧', title: 'Грудничковое плавание', age: '1 месяц — 1 год', text: 'Мягкая адаптация к воде, дыхание, ныряние и расслабление.', image: image('program-infant-swimming-v2.webp') },
+  { icon: '🐳', title: 'Раннее плавание', age: '1 — 3 года', text: 'Игровые занятия и первые навыки самостоятельного плавания.', image: image('program-early-swimming-v2.webp') },
+  { icon: '⭐', title: 'Дошкольное плавание', age: '3 — 5 лет', text: 'Подготовка к уверенному плаванию спортивными стилями.', image: image('program-preschool-swimming-v2.webp') },
+  { icon: '🥽', title: 'Школьное плавание', age: '5 — 10 лет', text: 'Техника, выносливость и подготовка к большому бассейну.', image: image('program-school-swimming-v2.webp') },
+  { icon: '💞', title: 'Вместе с родителем', age: '1 месяц — 3 года', text: 'Мама или папа в воде вместе с малышом и тренером.', image: image('program-parent-child-v2.webp') },
+  { icon: '💙', title: 'Коррекционное плавание', age: 'Индивидуально', text: 'Водная реабилитация для детей с ОВЗ.', image: image('program-corrective-swimming-v2.webp') },
+  { icon: '🧘', title: 'Аква-йога и акмионика', age: 'Для будущих мам', text: 'Дыхание, расслабление и бережная физическая активность.', image: image('program-aqua-yoga-v2.webp') },
+  { icon: '🌊', title: 'Свободное плавание', age: '30 минут — 2 500 ₽', text: 'Родитель и ребёнок плавают самостоятельно без тренера.', image: image('program-free-swimming-v2.webp') },
 ] as const;
 
 export const trainers = [
@@ -23,7 +23,7 @@ export const trainers = [
   },
   {
     name: 'Наталья',
-    fullName: 'Клеймёнова Наталья Николаевна',
+    fullName: 'Наталья',
     image: image('natalya-enhanced.webp'),
     role: 'Грудничковое, раннее, дошкольное и восстановительное плавание',
     quote: 'Не заставляю, а увлекаю. Вода должна быть в радость.',

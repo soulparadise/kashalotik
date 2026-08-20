@@ -1,0 +1,12 @@
+---
+interface Props {
+  label?: string;
+  class?: string;
+}
+
+const { label = 'Записаться', class: className = '' } = Astro.props;
+---
+
+<button type="button" class={className} data-booking-contact aria-haspopup="dialog">
+  {label}<slot />
+</button>
