@@ -10,8 +10,87 @@ import { site } from '@/data/site';
     <PageHero eyebrow="Наша команда" title="Тренеры с открытым сердцем" text="Люди, которые любят детей, слышат их и бережно знакомят с водой." />
     <WaveSection tone="blue" class="team-page">
       <div class="container team-page-grid" data-reveal-group>
-        {trainers.map(trainer => <article class="team-profile"><img src={trainer.image} alt={`${trainer.name}, тренер Кашалотика`} /><div><span>Тренер по плаванию</span><h2 class="hand">{trainer.name}</h2><p>{trainer.role}</p><blockquote>«{trainer.quote}»</blockquote><a class="button" href={site.booking}>Записаться к тренеру</a></div></article>)}
+        {trainers.map(trainer => (
+          <article class="team-profile">
+            <img src={trainer.image} alt={`${trainer.name}, тренер Кашалотика`} />
+            <div class="team-profile-content">
+              <span>Тренер по плаванию</span>
+              <h2 class="hand">{trainer.name}</h2>
+              <p>{trainer.role}</p>
+              <blockquote>«{trainer.quote}»</blockquote>
+              <details class="trainer-details">
+                <summary>Подробнее о тренере <i aria-hidden="true"></i></summary>
+                <div class="trainer-details-body">
+                  {'fullName' in trainer && <h3>{trainer.fullName}</h3>}
+                  {'facts' in trainer && (
+                    <section>
+                      <h4>Образование и опыт</h4>
+                      <ul>{trainer.facts.map(item => <li>{item}</li>)}</ul>
+                    </section>
+                  )}
+                  {'training' in trainer && (
+                    <section>
+                      <h4>Подготовка и курсы</h4>
+                      <ul>{trainer.training.map(item => <li>{item}</li>)}</ul>
+                    </section>
+                  )}
+                  {trainer.bio.map(paragraph => <p>{paragraph}</p>)}
+                </div>
+              </details>
+              <a class="button" href={site.booking}>Записаться к тренеру</a>
+            </div>
+          </article>
+        ))}
       </div>
     </WaveSection>
   </main>
 </BaseLayout>
+
+<script>
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  document.querySelectorAll<HTMLDetailsElement>('.trainer-details').forEach(details => {
+    const summary = details.querySelector<HTMLElement>('summary');
+    const body = details.querySelector<HTMLElement>('.trainer-details-body');
+    let animation: Animation | null = null;
+
+    if (!summary || !body) return;
+
+    summary.addEventListener('click', event => {
+      if (reducedMotion.matches) return;
+
+      event.preventDefault();
+      animation?.cancel();
+
+      if (details.open) {
+        body.style.overflow = 'hidden';
+        animation = body.animate(
+          [
+            { height: `${body.scrollHeight}px`, opacity: 1, transform: 'translateY(0)' },
+            { height: '0px', opacity: 0, transform: 'translateY(-8px)' },
+          ],
+          { duration: 260, easing: 'cubic-bezier(.4, 0, .2, 1)' },
+        );
+        animation.onfinish = () => {
+          details.open = false;
+          body.style.removeProperty('overflow');
+          animation = null;
+        };
+      } else {
+        details.open = true;
+        body.style.overflow = 'hidden';
+        animation = body.animate(
+          [
+            { height: '0px', opacity: 0, transform: 'translateY(-8px)' },
+            { height: `${body.scrollHeight}px`, opacity: 1, transform: 'translateY(0)' },
+          ],
+          { duration: 320, easing: 'cubic-bezier(.2, .8, .2, 1)' },
+        );
+        animation.onfinish = () => {
+          body.style.removeProperty('overflow');
+          animation = null;
+        };
+      }
+    });
+  });
+</script>

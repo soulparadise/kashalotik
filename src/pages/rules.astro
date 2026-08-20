@@ -2,12 +2,97 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import PageHero from '@/components/PageHero.astro';
 import WaveSection from '@/components/WaveSection.astro';
-const before = ['Снимите верхнюю одежду и уличную обувь.','Перед занятием примите душ с мылом без купального костюма.','После душа наденьте купальник или плавки, сланцы и шапочку.','Заходите в воду только после приглашения тренера.'];
-const things = ['Купальный костюм или плавки','Шапочка и сменная обувь','Полотенце и принадлежности для душа','Для малыша — подгузник для плавания','Абонемент'];
+import { site } from '@/data/site';
+
+const commonThings = [
+  'Сменная обувь — резиновые тапочки для ребёнка и каждого сопровождающего',
+  'Полотенце',
+  'Мыло, мочалка, шампунь или гель для душа',
+];
+
+const agePacks = [
+  { id: 'baby', age: '1 месяц — 1 год', label: 'Для малыша', icon: '🫧', items: ['Пелёнка на пеленальный стол', 'Swim-памперс (аквапамперс) или специальные плавательные трусики'], note: 'Аквапамперс или плавательные трусики можно приобрести в бассейне перед занятием.' },
+  { id: 'toddler', age: '1–3 года', label: 'Для первых заплывов', icon: '🐳', items: ['Пелёнка на пеленальный стол', 'Swim-памперс или специальные плавательные трусики — детям до 3 лет', 'Шапочка для плавания — детям от 2 лет, латексная или тканевая', 'Очки для плавания — по желанию, детям старше 2 лет'], note: 'Очки есть в бассейне, а аквапамперс при необходимости можно приобрести перед занятием.' },
+  { id: 'preschool', age: '3–7 лет', label: 'Для самостоятельных пловцов', icon: '🥽', items: ['Плавки или купальник', 'Шапочка для плавания — латексная или тканевая', 'Очки для плавания — по желанию'], note: 'Если своих очков пока нет, можно воспользоваться очками в бассейне.' },
+];
+
+const visitSteps = [
+  { number: '01', title: 'Переобуйтесь', text: 'Снимите верхнюю одежду и уличную обувь. Наденьте чистые резиновые тапочки.' },
+  { number: '02', title: 'Подготовьтесь без спешки', text: 'Если до занятия больше 10 минут, можно пройти с ребёнком в игровую. За 5–10 минут до начала переходите в раздевалку.' },
+  { number: '03', title: 'Посетите туалет', text: 'Разденьте ребёнка и перед душем обязательно предложите ему сходить в туалет.' },
+  { number: '04', title: 'Примите душ', text: 'Перед плаванием тщательно вымойтесь с мылом без купальника или плавок — это главное правило гигиены и чистоты воды.' },
+  { number: '05', title: 'Оденьтесь для бассейна', text: 'После душа наденьте купальный костюм, шапочку и сменную обувь.' },
+  { number: '06', title: 'Дождитесь тренера', text: 'Заходите в воду только после того, как предыдущий пловец вышел, а тренер пригласил ребёнка на занятие.' },
+];
 ---
-<BaseLayout title="Правила посещения детского бассейна | Кашалотик" description="Как подготовиться к занятию в детском бассейне «Кашалотик»: что взять с собой, правила гигиены, переноса и отмены тренировки.">
+
+<BaseLayout title="Правила посещения детского бассейна | Кашалотик" description="Что взять в детский бассейн по возрастам, какие нужны справки и как подготовиться к занятию в «Кашалотике». Правила гигиены, переноса и отмены тренировок.">
   <main>
-    <PageHero eyebrow="Правила посещения" title="Спокойное занятие начинается с подготовки" text="Простые правила помогают сохранять чистоту воды и комфорт всех гостей." />
-    <WaveSection tone="blue" class="rules-page"><div class="container rules-grid"><article data-reveal><span>01</span><h2 class="hand">Перед бассейном</h2><ol>{before.map(item => <li>{item}</li>)}</ol></article><article data-reveal><span>02</span><h2 class="hand">Что взять с собой</h2><ul>{things.map(item => <li>{item}</li>)}</ul></article><article data-reveal><span>03</span><h2 class="hand">После занятия</h2><p>Примите душ, вытрите ребёнка и высушите волосы. После этого можно отдохнуть в игровой зоне.</p></article><article class="rule-important" data-reveal><span>!</span><h2 class="hand">Перенос и отмена</h2><p>Сообщите администратору до 20:00 предшествующего дня. При отмене день в день занятие считается проведённым.</p></article></div></WaveSection>
+    <PageHero eyebrow="Всё для комфортного занятия" title="Собираемся в бассейн без спешки" text="Короткая памятка о вещах, справках и порядке посещения — чтобы первый и каждый следующий заплыв прошли спокойно." />
+    <WaveSection tone="blue" class="rules-page">
+      <div class="container rules-layout">
+        <nav class="rules-nav" aria-label="Разделы правил" data-reveal>
+          <a href="#things">Что взять</a><a href="#certificates">Справки</a><a href="#visit">Как проходит посещение</a><a href="#policies">Перенос и отмена</a>
+        </nav>
+
+        <section class="first-visit-card" data-reveal>
+          <div class="first-visit-title"><span aria-hidden="true">⭐</span><div><small>Первый раз в «Кашалотике»</small><h2>Перед первым занятием</h2></div></div>
+          <ol>
+            <li><b>Приезжайте за 10–15 минут</b><span>Хватит времени спокойно переобуться, освоиться и подготовить ребёнка без спешки.</span></li>
+            <li><b>Сверьтесь со списком по возрасту</b><span>Ниже можно выбрать возраст ребёнка и быстро проверить, всё ли вы взяли.</span></li>
+            <li><b>Познакомьтесь с тренером</b><span>Расскажите, как ребёнок относится к воде и какие особенности важно учитывать во время занятия.</span></li>
+          </ol>
+        </section>
+
+        <section class="rules-section" id="things">
+          <div class="rules-heading" data-reveal><span>Памятка родителям</span><h2 class="hand">Что взять с собой</h2><p>Сначала сложите общий набор, затем выберите возраст ребёнка и добавьте нужные вещи.</p></div>
+          <div class="common-pack" data-reveal><div class="common-pack-icon" aria-hidden="true">🎒</div><div><h3>Нужно всем</h3><ul>{commonThings.map(item => <li>{item}</li>)}</ul></div></div>
+          <div class="age-tabs" data-age-tabs data-reveal>
+            <div class="age-tab-list" role="tablist" aria-label="Возраст ребёнка">
+              {agePacks.map((pack, index) => <button id={`tab-${pack.id}`} role="tab" aria-controls={`panel-${pack.id}`} aria-selected={index === 0 ? 'true' : 'false'} tabindex={index === 0 ? 0 : -1} data-age-tab={pack.id}><small>{pack.label}</small><strong>{pack.age}</strong></button>)}
+            </div>
+            {agePacks.map((pack, index) => <article id={`panel-${pack.id}`} class="age-panel" role="tabpanel" aria-labelledby={`tab-${pack.id}`} hidden={index !== 0} data-age-panel={pack.id}><div class="age-panel-icon" aria-hidden="true">{pack.icon}</div><div><h3>{pack.age}</h3><ul>{pack.items.map(item => <li>{item}</li>)}</ul><p class="age-note">{pack.note}</p></div></article>)}
+          </div>
+        </section>
+
+        <section class="certificate-card" id="certificates" data-reveal>
+          <div class="certificate-icon" aria-hidden="true">✓</div><div><span>Для регулярных занятий</span><h2>Какие нужны справки</h2><div class="certificate-grid"><p><strong>Детям до 1 года</strong>Справка от педиатра с разрешением посещать бассейн.</p><p><strong>Детям от 1 года</strong>Справка от педиатра с разрешением посещать бассейн и результат соскоба на энтеробиоз.</p></div><p class="certificate-tip">Перед первым посещением уточните у администратора срок действия справок.</p></div>
+        </section>
+
+        <section class="rules-section" id="visit">
+          <div class="rules-heading" data-reveal><span>Шаг за шагом</span><h2 class="hand">Как подготовиться к занятию</h2><p>Простой порядок помогает не торопиться и сохранять воду чистой для всех маленьких пловцов.</p></div>
+          <div class="visit-steps" data-reveal-group>{visitSteps.map(step => <article><b>{step.number}</b><div><h3>{step.title}</h3><p>{step.text}</p></div></article>)}</div>
+        </section>
+
+        <section class="after-pool" data-reveal><div><span aria-hidden="true">☀</span><h2>После занятия</h2></div><p>Помогите ребёнку выйти из воды, посетите туалет и примите душ. Затем насухо вытрите ребёнка, аккуратно просушите уши, высушите волосы и оденьтесь.</p><p>После этого можно отдохнуть, немного перекусить и поиграть в игровой комнате.</p></section>
+
+        <section class="rules-section" id="policies">
+          <div class="rules-heading" data-reveal><span>Организационные моменты</span><h2 class="hand">Важные правила</h2></div>
+          <div class="policy-grid" data-reveal-group>
+            <article class="policy-card policy-card-important"><div class="policy-icon" aria-hidden="true">⏰</div><h3>Перенос или отмена</h3><p>Сообщите администратору <strong>до 20:00 дня, предшествующего занятию</strong>, независимо от причины.</p><p>Перенос или отмена день в день не предусмотрены: занятие списывается и считается проведённым.</p></article>
+            <article class="policy-card"><div class="policy-icon" aria-hidden="true">🤝</div><h3>Смена тренера</h3><p>Знакомство с разными тренерами помогает ребёнку легче адаптироваться и заниматься в удобное для семьи время.</p><p>При необходимости бассейн может заменить тренера, указанного в расписании. Все специалисты работают по единым принципам безопасности и бережного подхода.</p></article>
+            <article class="policy-card"><div class="policy-icon" aria-hidden="true">💙</div><h3>Простая этика пространства</h3><p>В бассейне плаваем, в душевой моемся, в раздевалке переодеваемся, а в игровой комнате играем и отдыхаем.</p><p>Пожалуйста, следуйте просьбам тренера и администратора — они отвечают за безопасность и комфорт всех гостей.</p></article>
+          </div>
+        </section>
+
+        <div class="rules-cta" data-reveal><div><span>Остались вопросы?</span><h2>Поможем подготовиться к первому занятию</h2><p>Администратор подскажет, какие вещи и документы понадобятся именно вашему ребёнку.</p></div><div><a class="button" href={site.booking}>Записаться</a><a class="rules-phone" href={`tel:${site.phone.replace(/[^+\d]/g, '')}`}>{site.phone}</a></div></div>
+      </div>
+    </WaveSection>
   </main>
 </BaseLayout>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-age-tabs]').forEach(tabs => {
+    const buttons = Array.from(tabs.querySelectorAll<HTMLButtonElement>('[data-age-tab]'));
+    const panels = Array.from(tabs.querySelectorAll<HTMLElement>('[data-age-panel]'));
+    const activate = (button: HTMLButtonElement) => {
+      const id = button.dataset.ageTab;
+      buttons.forEach(item => { const active = item === button; item.setAttribute('aria-selected', String(active)); item.tabIndex = active ? 0 : -1; });
+      panels.forEach(panel => { panel.hidden = panel.dataset.agePanel !== id; });
+    };
+    buttons.forEach((button, index) => {
+      button.addEventListener('click', () => activate(button));
+      button.addEventListener('keydown', event => { if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return; event.preventDefault(); const direction = event.key === 'ArrowRight' ? 1 : -1; const next = buttons[(index + direction + buttons.length) % buttons.length]; activate(next); next.focus(); });
+    });
+  });
+</script>
