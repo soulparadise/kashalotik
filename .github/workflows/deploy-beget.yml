@@ -1,0 +1,85 @@
+name: Deploy production to Beget
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: Commit, tag, or branch to deploy (leave empty for the selected revision)
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: beget-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Build and deploy production
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://kashalotik.ru/
+    steps:
+      - name: Check out deployment revision
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref || github.sha }}
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build production site
+        run: pnpm build
+        env:
+          DEPLOY_TARGET: production
+
+      - name: Record deployed commit
+        run: git rev-parse HEAD > dist/deployment-version.txt
+
+      - name: Configure SSH
+        env:
+          BEGET_SSH_KEY: ${{ secrets.BEGET_SSH_KEY }}
+          BEGET_KNOWN_HOSTS: ${{ secrets.BEGET_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$BEGET_SSH_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          printf '%s\n' "$BEGET_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+
+      - name: Validate deployment target
+        env:
+          BEGET_DEPLOY_PATH: ${{ secrets.BEGET_DEPLOY_PATH }}
+        run: |
+          case "$BEGET_DEPLOY_PATH" in
+            /home/*/public_html|/home/*/public_html/) ;;
+            *) echo "BEGET_DEPLOY_PATH must be a dedicated /home/.../public_html directory" >&2; exit 1 ;;
+          esac
+
+      - name: Deploy static files
+        env:
+          BEGET_HOST: ${{ secrets.BEGET_HOST }}
+          BEGET_USER: ${{ secrets.BEGET_USER }}
+          BEGET_DEPLOY_PATH: ${{ secrets.BEGET_DEPLOY_PATH }}
+        run: >-
+          rsync -az --delete-delay
+          --exclude='.well-known/'
+          --exclude='cgi-bin/'
+          --chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r
+          -e 'ssh -o BatchMode=yes -o StrictHostKeyChecking=yes'
+          dist/
+          "$BEGET_USER@$BEGET_HOST:$BEGET_DEPLOY_PATH/"
