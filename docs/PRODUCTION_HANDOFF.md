@@ -5,7 +5,7 @@
 ## Текущий результат
 
 - Production-сборка Kashalotik опубликована на виртуальном хостинге Beget.
-- Активная версия на сервере: `f01e22b34f8c87cd56720341302fb8f96932adaa` (`Prepare Beget production deployment`).
+- Базовый production-деплой выполнен коммитом `f01e22b34f8c87cd56720341302fb8f96932adaa`; канонические HTTPS-редиректы впервые проверены на сервере для коммита `48fef66f3fdfcf2952ddf3cb941bcf8794611e7b`. Текущую активную ревизию всегда определять по `deployment-version.txt`, поскольку каждый следующий push в `main` меняет SHA.
 - GitHub Actions `Deploy production to Beget #1` и `Deploy Astro preview to GitHub Pages #43` завершились успешно.
 - Production-файлы находятся в `/home/s/soulpab9/soulpab9.beget.tech/public_html`.
 - К одному каталогу Beget прилинкованы `soulpab9.beget.tech`, `kashalotik.ru` и `preview.kashalotik.ru`.
