@@ -2,7 +2,7 @@
 import WaveSection from '@/components/WaveSection.astro';
 import BookingContactButton from '@/components/BookingContactButton.astro';
 import { site } from '@/data/site';
-import { singleVisitOffer, subscriptionCategories, subscriptionConditions, trialOffer } from '@/data/pricing';
+import { promotions, singleVisitOffer, subscriptionCategories, subscriptionConditions, trialOffer } from '@/data/pricing';
 import '@/styles/pricing-section.css';
 const sessionWord = (count: number) => {
   if (count % 100 >= 11 && count % 100 <= 14) return 'занятий';
@@ -134,6 +134,29 @@ const schedulePlaceholder = subscriptionCategories.find(category => category.sch
         <ul>{subscriptionConditions.map(condition => <li>{condition}</li>)}</ul>
       </div>
     </div>
+
+    <section class="promotions-area" aria-labelledby="promotions-title" data-reveal>
+      <div class="promotions-heading">
+        <small>Выгода для всей семьи</small>
+        <h2 id="promotions-title" class="hand"><span>〰</span>Скидки и акции<span>〰</span></h2>
+        <p>Выберите подходящее предложение — мы подскажем детали при записи.</p>
+      </div>
+
+      <div class="promotions-grid" data-reveal-group>
+        {promotions.map((promotion, index) => (
+          <article class:list={['promotion-card', index === 0 && 'is-featured']}>
+            <div class="promotion-card-top">
+              <strong>{promotion.badge}</strong>
+            </div>
+            <h3>{promotion.title}</h3>
+            <p>{promotion.description}</p>
+            <ul>{promotion.conditions.map(condition => <li>{condition}</li>)}</ul>
+          </article>
+        ))}
+      </div>
+
+      <p class="promotions-note"><strong>Обратите внимание:</strong> скидки по действующим акциям не суммируются.</p>
+    </section>
   </div>
 </WaveSection>
 

@@ -22,6 +22,7 @@ body.home-font-concept .lesson-card p{font-size:13px;font-weight:600;line-height
 body.home-font-concept .price-card p{font-size:13px;font-weight:600;line-height:1.5}
 body.home-font-concept .trainer-card p{font-size:12px;font-weight:600;line-height:1.5}
 body.home-font-concept .trust-grid p{font-size:14px;font-weight:600;line-height:1.55}
+.review-stars{margin-bottom:16px;color:#f4b72f;font-size:20px;font-weight:900;letter-spacing:4px}.trust-grid .review-source{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-top:15px;border-top:1px solid var(--line);text-decoration:none}.trust-grid .review-source strong{color:var(--blue);font-size:13px}.trust-grid .review-source span{color:var(--muted);font-size:12px;font-weight:700}.trust-grid .review-source:hover strong{color:var(--pink)}
 body.home-font-concept .home-cta p{font-size:16px;font-weight:600;line-height:1.5}
 body.home-font-concept .hero-trust span{font-size:11px;font-weight:600;line-height:1.4}
 @media(max-width:640px){body.home-font-concept .hero-copy p{font-size:17px}body.home-font-concept .section-title p{font-size:14px}}
