@@ -6,6 +6,22 @@ import WaveSection from '@/components/WaveSection.astro';
 import { programs, trainers } from '@/data/content';
 import { base, site } from '@/data/site';
 import '@/styles/home.css';
+
+const featuredReviews = [
+  {
+    text: 'Сын научился плавать с нуля. Теперь на занятия планируем отдать еще и старшую дочь.',
+    date: '15 марта',
+  },
+  {
+    text: 'Чисто и уютно. Приятные администраторы. А самое главное - ребёнок с удовольствием ходит и гордится своими результатами.',
+    date: '10 октября 2025',
+    dateTime: '2025-10-10',
+  },
+  {
+    text: 'Дочка занимается с удовольствием, тренера внимательные и терпеливые. Вода чистая, температура комфортная, раздевалки и душевые в хорошем состоянии.',
+    date: '25 июня',
+  },
+];
 ---
 <BaseLayout title="Детский бассейн в Чертаново — индивидуальное плавание | Кашалотик" description="Детский бассейн «Кашалотик» в Чертаново: индивидуальные занятия для детей от 1 месяца до 10 лет, вода 32–34 °C и опытные тренеры. Запишитесь на пробное занятие." bodyClass="home-font-concept">
   <main>
@@ -24,24 +40,28 @@ import '@/styles/home.css';
       <div class="container">
         <div class="section-title" data-reveal>
           <h2 class="hand"><span>〰</span>Забота, которой доверяют<span>〰</span></h2>
-          <p>Реальные впечатления родителей после занятий в «Кашалотике».</p>
         </div>
+        <a class="trust-award" href={site.maps} aria-label="Кашалотик — Хорошее место 2026, рейтинг 4,9 из 5 на Яндекс Картах" data-reveal>
+          <span class="trust-award__image">
+            <img src={`${base}assets/images/yandex-good-place-2026.png`} alt="" loading="lazy" width="1200" height="630" />
+          </span>
+          <span class="trust-award__content">
+            <span class="trust-award__eyebrow">Награда Яндекс Карт</span>
+            <strong>Хорошее место 2026</strong>
+            <span class="trust-award__rating"><b>4,9</b><small>на Яндекс Картах</small></span>
+          </span>
+        </a>
         <div class="trust-grid" data-reveal-group>
-          <article>
-            <div class="review-stars" aria-label="Оценка 5 из 5">★★★★★</div>
-            <p>«Сын научился плавать с нуля».</p>
-            <a class="review-source" href={`${site.maps}reviews/`}><strong>Яндекс Карты</strong><span>15 марта</span></a>
-          </article>
-          <article>
-            <div class="review-stars" aria-label="Оценка 5 из 5">★★★★★</div>
-            <p>«С каждым занятием виден прогресс».</p>
-            <a class="review-source" href={`${site.maps}reviews/`}><strong>Яндекс Карты</strong><span>7 марта</span></a>
-          </article>
-          <article>
-            <div class="review-stars" aria-label="Оценка 5 из 5">★★★★★</div>
-            <p>«Дочка занимается с удовольствием, тренеры внимательные и терпеливые. Вода чистая, температура комфортная».</p>
-            <a class="review-source" href={`${site.maps}reviews/`}><strong>Яндекс Карты</strong><span>25 июня</span></a>
-          </article>
+          {featuredReviews.map(review => (
+            <article>
+              <div class="review-stars" aria-label="Оценка 5 из 5"><span aria-hidden="true">★★★★★</span></div>
+              <blockquote>«{review.text}»</blockquote>
+              <a class="review-source" href={`${site.maps}reviews/`}>
+                <strong>Яндекс Карты</strong>
+                {review.dateTime ? <time datetime={review.dateTime}>{review.date}</time> : <span>{review.date}</span>}
+              </a>
+            </article>
+          ))}
         </div>
         <div class="section-action"><a class="button secondary" href={`${site.maps}reviews/`}>Все отзывы на Яндекс Картах</a></div>
       </div>
