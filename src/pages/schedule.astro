@@ -47,8 +47,10 @@ const scheduleMascotMessages = [
             aria-label={`Кашалотик говорит: ${scheduleMascotMessages[0]}`}
           >
             <span class="mascot-speech">{scheduleMascotMessages[0]}</span>
-            <span class="schedule-mascot-whale mascot-crop" aria-hidden="true">
-              <img src={`${import.meta.env.BASE_URL}assets/images/logo-2026.svg`} alt="" />
+            <span class="schedule-mascot-whale" aria-hidden="true">
+              <span class="schedule-mascot-whale-crop mascot-crop">
+                <img src={`${import.meta.env.BASE_URL}assets/images/logo-2026.svg`} alt="" />
+              </span>
             </span>
           </aside>
         </div>
