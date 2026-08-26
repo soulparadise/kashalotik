@@ -9,15 +9,12 @@ const trainerByName = new Map(trainers.map(trainer => [trainer.name, trainer]));
 ---
 <BaseLayout title="Расписание тренеров детского бассейна | Кашалотик" description="Регулярное расписание тренеров детского бассейна «Кашалотик». Выберите удобный день и перейдите к актуальным свободным окнам в YCLIENTS.">
   <main>
-    <PageHero compact eyebrow="Планируем занятия" title="Расписание тренеров" text="Выберите удобный день и посмотрите свободное время нужного тренера." />
+    <PageHero eyebrow="Планируем занятия" title="Расписание тренеров" text="Выберите удобный день и сразу переходите к свободному времени нужного тренера." />
     <WaveSection tone="blue" class="schedule-page">
       <div class="container">
         <div class="schedule-note" data-reveal>
           <span aria-hidden="true">◷</span>
-          <div>
-            <p><strong>Показаны постоянные смены.</strong> Свободные окна — в онлайн-записи.</p>
-            <a href={`${import.meta.env.BASE_URL}team/`}>Хотите сначала выбрать специалиста? Познакомиться с тренерами →</a>
-          </div>
+          <p><strong>На сайте указаны постоянные смены.</strong> Актуальные свободные окна и запись доступны по кнопке выбранного тренера.</p>
         </div>
         <div class="schedule-week" data-reveal-group>
           {weeklySchedule.map(day => (
@@ -27,10 +24,9 @@ const trainerByName = new Map(trainers.map(trainer => [trainer.name, trainer]));
                 {day.shifts.map(shift => {
                   const trainer = trainerByName.get(shift.trainer);
                   return trainer && (
-                    <a class="schedule-shift" href={trainer.booking} aria-label={`Онлайн-запись: ${trainer.name}, ${day.day}, ${shift.time}`}>
-                      <img src={trainer.image} alt="" loading="lazy" width="52" height="52" />
-                      <span class="schedule-shift-info"><time>{shift.time}</time><strong>{trainer.name}</strong></span>
-                      <span class="schedule-shift-cta">Посмотреть свободное время <b aria-hidden="true">→</b></span>
+                    <a href={trainer.booking} aria-label={`Онлайн-запись: ${trainer.name}, ${day.day}, ${shift.time}`}>
+                      <img src={trainer.image} alt="" loading="lazy" width="54" height="54" />
+                      <span><strong>{trainer.name}</strong><time>{shift.time}</time><small>Свободное время →</small></span>
                     </a>
                   );
                 })}
