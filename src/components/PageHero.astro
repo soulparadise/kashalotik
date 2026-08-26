@@ -32,6 +32,7 @@ const mascotMessage = mascotMessages[0];
   document.querySelectorAll<HTMLElement>('[data-mascot-messages]').forEach((mascot) => {
     const speech = mascot.querySelector<HTMLElement>('.mascot-speech');
     const messages = JSON.parse(mascot.dataset.mascotMessages || '[]') as string[];
+    const autoplayDelay = Number(mascot.dataset.mascotAutoplay || 0);
     let current = 0;
     const chooseMessage = () => {
       if (!speech || messages.length < 2) return;
@@ -42,5 +43,8 @@ const mascotMessage = mascotMessages[0];
     };
     mascot.addEventListener('pointerenter', chooseMessage);
     mascot.addEventListener('focus', chooseMessage);
+    if (autoplayDelay > 0 && messages.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      window.setInterval(chooseMessage, autoplayDelay);
+    }
   });
 </script>
