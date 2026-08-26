@@ -1,3 +1,5 @@
-.header-row{gap:18px}
-.desktop-nav{flex:1;justify-content:center;gap:17px;margin-left:0;font-size:13px;line-height:1.2;text-align:center}
-@media(max-width:1220px) and (min-width:1001px){.phone{display:none}.desktop-nav{gap:14px;font-size:12.5px}}
+.header-row{gap:16px}
+.desktop-nav{flex:1;justify-content:center;gap:14px;margin-left:0;font-size:13px;line-height:1.2;text-align:center}
+.desktop-nav a{white-space:nowrap}
+.phone{flex:0 0 auto;white-space:nowrap}
+@media(max-width:1320px) and (min-width:1001px){.phone{display:none}.desktop-nav{gap:14px;font-size:12.5px}}

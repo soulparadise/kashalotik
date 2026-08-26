@@ -8,3 +8,6 @@
 
 .price-grid-full .price-card{min-height:300px}.price-grid-full .inner-price-cta{height:46px;margin-top:auto;padding:11px 22px;border:2px solid var(--pink);background:#fff;color:var(--pink);box-shadow:none;opacity:1;visibility:visible;transform:none;pointer-events:auto}.price-grid-full .price-card:hover .inner-price-cta,.price-grid-full .price-card:focus-within .inner-price-cta{background:var(--pink);color:#fff;box-shadow:0 10px 25px #f76b9d40;transform:translateY(-2px)}
 .detail-heading h2,.format-panel h2,.map-panel h2{font-size:clamp(32px,3.6vw,42px);line-height:1.1}
+
+.trainer-availability{margin:22px 0 20px;padding:18px;border:1px solid var(--line);border-radius:22px;background:var(--pale)}.trainer-availability h3{margin:0 0 12px;font-size:15px}.trainer-availability>div{display:flex;flex-wrap:wrap;gap:8px}.trainer-availability span{padding:7px 10px;border-radius:999px;background:#fff;color:var(--muted);font-size:11px;font-weight:700}.trainer-availability span b{color:var(--blue)}.trainer-availability small{display:block;margin-top:11px;color:var(--muted);font-size:11px;line-height:1.45}.team-profile-content>.button{align-self:flex-start}
+@media(max-width:640px){.team-profile-content>.button{width:100%}}

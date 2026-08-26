@@ -2,8 +2,14 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import PageHero from '@/components/PageHero.astro';
 import WaveSection from '@/components/WaveSection.astro';
-import { trainers } from '@/data/content';
-import { site } from '@/data/site';
+import { trainers, weeklySchedule } from '@/data/content';
+import '@/styles/detail-pages.css';
+
+const trainerSchedule = (name: string) => weeklySchedule.flatMap(day =>
+  day.shifts
+    .filter(shift => shift.trainer === name)
+    .map(shift => ({ day: day.shortDay, time: shift.time })),
+);
 ---
 <BaseLayout title="Тренеры по грудничковому и детскому плаванию | Кашалотик" description="Познакомьтесь с тренерами детского бассейна «Кашалотик». Индивидуальный подход, бережное знакомство с водой и программы для детей разного возраста.">
   <main>
@@ -37,7 +43,12 @@ import { site } from '@/data/site';
                   {trainer.bio.map(paragraph => <p>{paragraph}</p>)}
                 </div>
               </details>
-              <a class="button" href={site.booking}>Записаться к тренеру</a>
+              <div class="trainer-availability" aria-label={`Расписание тренера ${trainer.name}`}>
+                <h3>Когда ведёт занятия</h3>
+                <div>{trainerSchedule(trainer.name).map(shift => <span><b>{shift.day}</b> {shift.time}</span>)}</div>
+                <small>Актуальные свободные окна смотрите в онлайн-записи.</small>
+              </div>
+              <a class="button" href={trainer.booking}>Посмотреть свободное время</a>
             </div>
           </article>
         ))}

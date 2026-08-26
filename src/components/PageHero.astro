@@ -1,5 +1,5 @@
 ---
-interface Props { eyebrow: string; title: string; text: string; mascotMessages?: string[]; }
+interface Props { eyebrow: string; title: string; text: string; mascotMessages?: string[]; compact?: boolean; }
 const defaultMascotMessages = [
   'Наша команда лучше всех!',
   'Здесь вода всегда тёплая!',
@@ -12,10 +12,10 @@ const defaultMascotMessages = [
   'Заботимся о каждом ребёнке!',
   'В «Кашалотике» вода в радость!',
 ];
-const { eyebrow, title, text, mascotMessages = defaultMascotMessages } = Astro.props;
+const { eyebrow, title, text, mascotMessages = defaultMascotMessages, compact = false } = Astro.props;
 const mascotMessage = mascotMessages[0];
 ---
-<section class="page-hero">
+<section class:list={['page-hero', compact && 'page-hero-compact']}>
   <div class="container page-hero-inner">
     <div class="page-hero-copy" data-reveal-group>
       <span class="eyebrow">{eyebrow}</span>
