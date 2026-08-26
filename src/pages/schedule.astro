@@ -6,6 +6,12 @@ import { trainers, weeklySchedule } from '@/data/content';
 import '@/styles/schedule.css';
 
 const trainerByName = new Map(trainers.map(trainer => [trainer.name, trainer]));
+const scheduleMascotMessages = [
+  'Выбирайте удобный день — и ныряем!',
+  'До встречи в тёплой воде!',
+  'Первое занятие начинается с одного клика!',
+  'Пора знакомиться с водой!',
+];
 ---
 <BaseLayout title="Расписание тренеров детского бассейна | Кашалотик" description="Регулярное расписание тренеров детского бассейна «Кашалотик». Выберите удобный день и перейдите к актуальным свободным окнам в YCLIENTS.">
   <main>
@@ -33,6 +39,17 @@ const trainerByName = new Map(trainers.map(trainer => [trainer.name, trainer]));
               </div>
             </article>
           ))}
+          <aside
+            class="schedule-mascot"
+            data-mascot-messages={JSON.stringify(scheduleMascotMessages)}
+            tabindex="0"
+            aria-label={`Кашалотик говорит: ${scheduleMascotMessages[0]}`}
+          >
+            <span class="mascot-speech">{scheduleMascotMessages[0]}</span>
+            <span class="schedule-mascot-whale mascot-crop" aria-hidden="true">
+              <img src={`${import.meta.env.BASE_URL}assets/images/logo-2026.svg`} alt="" />
+            </span>
+          </aside>
         </div>
       </div>
     </WaveSection>
