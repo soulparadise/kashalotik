@@ -78,7 +78,7 @@ export const trainers = [
 export const weeklySchedule = [
   { day: 'Понедельник', shortDay: 'Пн', shifts: [{ trainer: 'Наталья', time: '09:00–15:30' }, { trainer: 'Полина', time: '15:30–21:00' }] },
   { day: 'Вторник', shortDay: 'Вт', shifts: [{ trainer: 'Алина', time: '09:00–15:30' }, { trainer: 'Сергей', time: '17:30–21:00' }] },
-  { day: 'Среда', shortDay: 'Ср', shifts: [{ trainer: 'Эльвира', time: '10:00–16:00' }, { trainer: 'Наталья', time: '16:00–21:00' }] },
+  { day: 'Среда', shortDay: 'Ср', shifts: [{ trainer: 'Эльвира', time: '09:00–16:00' }, { trainer: 'Наталья', time: '16:00–21:00' }] },
   { day: 'Четверг', shortDay: 'Чт', shifts: [{ trainer: 'Алина', time: '09:00–15:30' }, { trainer: 'Полина', time: '15:30–21:00' }] },
   { day: 'Пятница', shortDay: 'Пт', shifts: [{ trainer: 'Наталья', time: '09:00–15:30' }, { trainer: 'Полина', time: '15:30–21:00' }] },
   { day: 'Суббота', shortDay: 'Сб', shifts: [{ trainer: 'Сергей', time: '09:00–15:00' }, { trainer: 'Эльвира', time: '15:00–20:00' }] },
